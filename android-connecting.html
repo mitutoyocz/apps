@@ -99,29 +99,36 @@
             <!--Edit Main Content Area here-->
                 <div class="span12" id="divMain">
 
-                    <h1>Connecting Mitutoyo small instruments with an Android devices.</h1>
+                    <h1>Connecting Mitutoyo small instruments with an Android devices</h1>
                     <hr>
-					<img src="images/scales.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">
-                    <p>Many of Mitutoyo small instruments are able to send results to computer or similar electronic device.  In praxis should be pretty to connect wide used small Android device as tablets or mobile phones. It is possible some ways:
+					<img src="images/android-connecting.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">
+                    <p>Many of Mitutoyo small instruments are able to send results to computer or similar electronic device.  In praxis should be pretty to connect wide used small Android device as tablets or mobile phones. This composition bring us two fundamental advantages:
+					<ul>
+					<li>Data keeping and its good visual local presentation.</li>
+					<li>Transport of data to target place for saving and final processing.</li>
+					</ul>
+					Android connection is possible some ways:
 					</p>				                					
-                    <h2>Connection using USB-ITN cable</h2>
-					<p>Connection using Mitutoyo USB-ITN cable is easiest way for connecting small tools such as calipers, micrometers or dial indicators. Thank HID (Human Interface Device) functionality we need only USB OTG adapter, which realize transformation of USB A connector to micro USB common used by Android devices.
+                    <h3>Connection using USB-ITN cable</h3>
+					<p>Connection using Mitutoyo USB-ITN cable is easiest way for connecting small tools such as calipers, micrometers or dial indicators. Thank HID (Human Interface Device) functionality we need only USB OTG adapter. It realize the transformation of USB A connector to micro USB common used by Android devices. Some <a href="https://i.czc.cz/2k8t50sp40g8a81oe0quo0ua52_1/obrazek">arts of this cable</a> allow use it for external power supply with mobile phone power adapter.
 					</p>
-					<p>Appropriate Android application for visualization of data should be <strong><a href="https://play.google.com/store/apps/details?id=com.rhmsoft.edit&hl=cs">Quick Edit</a></strong>. This simple text editor allow setting of text size, line numbering, etc.
+					<p>Appropriate Android application for visualization of data should be <strong><a href="https://play.google.com/store/apps/details?id=com.rhmsoft.edit&hl=en">Quick Edit</a></strong>. This simple text editor allow setting of text size, line numbering, etc.
 					</p>
 					<p style="text-align:center">
+						<img src="images/QuickEditCaliper.jpg" class="img-polaroid" alt="">
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						<img src="images/QuickEdit1.png" class="img-polaroid" alt="">
 						<br />
-						<small><i>Record of output from the digimatic caliper.</small></i>
+						<small><i>Setup and output record example from the digimatic caliper.</small></i>
 					</p>
 					<p>That kind of connection is very easy, cheap and effective. This set of devices should be used for example as small data logger.
 					</p>
 					<p>To Android device is this way possible connect not only one, but more Mitutoyo instruments. For this case we need use USB OTG cable with more USB input connectors or USB hub.
 					</p>
-					<h2>RS232 connecting using RS232/USB converter</h2> 
+					<h3>RS232 connecting using RS232/USB converter</h3> 
 					</p>Instruments with RS232 output is possible connect with Android devices using the RS232/USB convertors.  Choose convertor with FTDI or other wide used chips. This way is possible connect for example <strong>linear height instruments</strong> (LH600) or other instruments with <strong>QM Data unit</strong> (measuring projectors) or <strong>laser scan microscopes</strong> (LSM).
 					</p>
-					<p>Appropriate Android application for visualization of data is <strong><a href="https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal&hl=cs">Serial USB terminal</a></strong>. This application allow setting of text size, using timestamp, send commands to RS232 line using macros, etc.
+					<p>Appropriate Android application for visualization of data is <strong><a href="https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal&hl=en">Serial USB terminal</a></strong>. This application allow setting of text size, using timestamp, send commands to RS232 line using macros, etc.
 					</p>
 					<h4>LH600</h4>
 					<p style="text-align:center">
@@ -148,7 +155,7 @@
 						<br />
 						<small><i>Setting macro M1: send "R" char to RS232. Then is possible start the measuring direct from Android pressing M1 button. See recorded rows with "R". Diferrent (blue) collor denote output direction of RS232 signal.</small></i>
 					</p>
-					<h2>Wireless RS232 connecting using RS232/bluetooth converter</h2>
+					<h3>Wireless RS232 connecting using RS232/bluetooth converter</h3>
 					<p>Principle is possible connect RS232 instruments wireless using RS232/Bluetooth converter. But this solutions is not very efficient from these reasons:
 					</p>
 					<ul>
@@ -156,10 +163,37 @@
 						<li>When wireless, why use Android as a target device? Better way is use RS232 wireless solutions and as target connect direct the stable PC.</li>
 					</ul>
 
-					<h2>Software and subsequent data processing</h2>
 
-					            		                            
+					<h2>Software and subsequent data processing</h2>
+					<p>It exist some way how process measuring data from Android device.
+					</p>
+					<p><strong>1)</strong> Easiest way is save them into Android filesystem (for example SD card) and then copy them to PC and process these. In this case the Android device works such as data logger. This process is typical by using <strong>Serial USB Terminal</strong>, because this not allow other kind of data saving as to local filesystem. For transfer of saved file is possible to use usually cable connection or we can transfer the file immediately using some Android file manager (I prefer <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2&hl=en">Solid Explorer</a>).
+					</p>
+					<p><strong>2)</strong> Some programs, for example <strong>Quick Edit</strong>, allow save data direct to local network using FTP or save them to cloud as <strong>Google Drive</strong> or <strong>Dropbox</strong>. In this way we can save measuring data to higher system almost immediately. Quick Edit moreover allow automatic data saving in assigned time interval.
+					</p>
+					<p><strong>3)</strong> Good way for data visualization and print is using <strong>JavaScript webpages</strong> on local network. This way allow except data processing present the data in graphical form too. Programming JavaScript webpages is relative easy. Disadvantage of this solution is impossibility to save these data direct from the webpage to local filesystem. But results on the webpage page is possible print or save.
+					</p>
+					<div alert class="alert alert-lok">
+					Easy data processing using JavaScript page you can <a href="android-connecting-data1.html">test here</a>.
+					</div>
+					<p><strong>4)</strong> Similar situation as previous paragraph is using <strong>webpages with server-side solution</strong>. This solution allow save data to a server database and it is robust solution with continuous data saving. This solutions should be similar as MeasurLink. Disadvantage is, that programming and infrastructure maintenance is not easy.
+					</p>
+					<p><strong>5)</strong> Other good and easy way is using cloud applications like <a href="https://www.google.com/sheets/about/">Google Sheets</a> or <strong>Excel for Android</strong>. Google Sheets in online mode allow save data and view these another place in real time. It some situation it should be great! Future more with some code should Google Sheet application work with “active cells” and it can for example mark cells with color to OK/NOT OK status depending on values (known form ITPAK).
+					<br />
+					If you use <strong>Google Sheets</strong> for data processing, do not forget set to the application language US. In other case (and if your country use as decimal delimiter comma) the data from instruments with point as delimiter will not present as number, but as text only. This situation is known by using Excel for the same purposes.
+					</p>
+					
+					<img src="images/android-connecting_setup.jpg" alt="" style="margin-left:50px">
+					
+					<h2>Next continue (in future):</h2>
+					<ul>
+						<li>Continuously data presentation from measuring instruments (especially indicators)</li>
+						<li>Connecting DMX and EV boxes</li>
+						<li>More examples form data processing application</li>
+					</ul>          		                       
                 </div>
+				<div align="right">Martin Marusak
+				</div> 
             <!--End Main Content Area-->
             </div>
 
@@ -233,14 +267,11 @@
         </div>
     </div>
 </div>
-<br /><br /><br />
+<br />
 
 <script src="scripts/jquery.min.js" type="text/javascript"></script> 
 <script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="scripts/default.js" type="text/javascript"></script>
-
-
-
 
 
 </body>

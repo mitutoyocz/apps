@@ -37,6 +37,9 @@ h3, h4, h5, h6 {line-height:1.5 !important}
     font-size:inherit !important;
 }
 
+/* MM */
+.tableOfMeasurements  { text-align: right; border: 1px solid #ccc; }
+.tableOfMeasurements th, td {padding-right: 10px; border: 1px solid #ccc;}
 
 /* Contact */
 
