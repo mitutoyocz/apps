@@ -105,13 +105,13 @@
 						</select>
 					</div>
 					
-					<div id="graphdiv1" style="width:1000px; height:500px;"></div>
+					<div id="graphdiv1" style="width:1000px; height:400px;"></div>
 					<p>&nbsp;</p>
 					
-					<div id="graphdiv2" style="width:1000px; height:500px;"></div>
+					<div id="graphdiv2" style="width:1000px; height:400px;"></div>
 					<p>&nbsp;</p>
 					
-					<div id="graphdiv3" style="width:1000px; height:500px;"></div>
+					<div id="graphdiv3" style="width:1000px; height:400px;"></div>
 					<p>&nbsp;</p>
 					
 					<table id="tableOfMeasurements" class="tableOfMeasurements" width="220px">
@@ -150,7 +150,7 @@
 				// graphs and their basic properties
 				g1 = new Dygraph(
 					document.getElementById("graphdiv1"), 
-					data, 
+					data1, 
 					{
 						digitsAfterDecimal: 3, 
 						drawPoints: true, 
@@ -165,7 +165,7 @@
 
 				g2 = new Dygraph(
 					document.getElementById("graphdiv2"), 
-					data, 
+					data2, 
 					{
 						digitsAfterDecimal: 3, 
 						drawPoints: true, 
@@ -180,7 +180,7 @@
 
 				g3 = new Dygraph(
 					document.getElementById("graphdiv3"), 
-					data, 
+					data3, 
 					{
 						digitsAfterDecimal: 3, 
 						drawPoints: true, 
@@ -214,16 +214,16 @@
 								if (rovNumber <= graphCountOfValues){
 									// first N values into empty graph
 									data1[rovNumber] = [rovNumber, Number(enteredValue)]; 
-									data2[rovNumber] = [rovNumber, Null];
-									data3[rovNumber] = [rovNumber, Null];  									
+									data2[rovNumber] = [rovNumber, null];
+									data3[rovNumber] = [rovNumber, null];  									
 								} 
 								else {
 									// shifting graph lines
 									data1.push([rovNumber, Number(enteredValue)]);
 									data1.shift();
-									data2.push([rovNumber, Null]);
+									data2.push([rovNumber, null]);
 									data2.shift();
-									data3.push([rovNumber, Null]);
+									data3.push([rovNumber, null]);
 									data3.shift();
 								}
 								rovNumber = rovNumber + 1;
@@ -242,7 +242,7 @@
 										// first N values into empty graph
 										data1[rovNumber] = [rovNumber, channel1]; 
 										data2[rovNumber] = [rovNumber, Number(enteredValue)];
-										data3[rovNumber] = [rovNumber, Null];    
+										data3[rovNumber] = [rovNumber, null];    
 									} 
 									else {
 										// shifting graph lines
@@ -250,7 +250,7 @@
 										data1.shift();
 										data2.push([rovNumber, Number(enteredValue)]);
 										data2.shift();
-										data3.push([rovNumber, Null]);
+										data3.push([rovNumber, null]);
 										data3.shift();
 									}
 									actualChannelNr = 1;
