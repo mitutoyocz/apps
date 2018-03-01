@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Your page title here :)</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="skel_css/normalize.css">
+  <link rel="stylesheet" href="skel_css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="favicon.ico">
+  
+  <!-- DYGRAPH -->
+  <link rel="stylesheet" href="dygraph.css">
+  <script type="text/javascript" src="dygraph.js"></script>
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 1%">      
+
+		<h3>Measuring data collection and presentation</h3>
+
+		<input type="text" id="txtMeasurement"/>
+		<div>Count of channels:&nbsp;
+			<select id="countOfChannels" onchange="ChannelCountChanged()" style="width: 90px">
+			  <option value=1>1</option>
+			  <option value=2>2</option>
+			  <option value=3>3</option>
+			</select>
+		</div>
+		
+		<div id="graphdiv1" style="width:100%; height:400px;"></div>
+		<p>&nbsp;</p>
+		
+		<div id="graphdiv2" style="width:100%; height:400px;"></div>
+		<p>&nbsp;</p>
+		
+		<div id="graphdiv3" style="width:100%; height:400px;"></div>
+		<p>&nbsp;</p>
+		
+		
+		<p>&nbsp;</p>
+		
+															
+		<script>
+				
+	var data1 = [];
+	var data2 = [];
+	var data3 = [];
+	// data1.push([0, 0]);
+	
+	var countOfChannels = 1;
+	var actualChannelNr = 1;
+	var channel1 = 0;
+	var channel2 = 0;
+	var graphCountOfValues = 50;
+	var enteredValue;
+	
+	// fill initial values into data arrays
+	for (i = 0; i <= graphCountOfValues; i++) { 
+		data1.push([i, null]);
+		data2.push([i, null]);
+		data3.push([i, null]);
+	}
+	var rovNumber = 0;
+	
+	// graphs and their basic properties
+	g1 = new Dygraph(
+		document.getElementById("graphdiv1"), 
+		data1, 
+		{
+			digitsAfterDecimal: 3, 
+			drawPoints: true, 
+			drawAxesAtZero: true, 
+			axisLineWidth: 1.3, 
+			axisTickSize: 3.0, 
+			labels: ['Nr.', 'Ch.',],
+			colors: ['#CC0000'],
+			strokeWidth: 2  
+		}
+	);
+
+	g2 = new Dygraph(
+		document.getElementById("graphdiv2"), 
+		data2, 
+		{
+			digitsAfterDecimal: 3, 
+			drawPoints: true, 
+			drawAxesAtZero: true, 
+			axisLineWidth: 1.3, 
+			axisTickSize: 3.0, 
+			labels: ['Nr.', 'Ch.'],
+			colors: ['#00CC00'],
+			strokeWidth: 2  
+		}
+	);
+
+	g3 = new Dygraph(
+		document.getElementById("graphdiv3"), 
+		data3, 
+		{
+			digitsAfterDecimal: 3, 
+			drawPoints: true, 
+			drawAxesAtZero: true, 
+			axisLineWidth: 1.3, 
+			axisTickSize: 3.0, 
+			labels: ['Nr.', 'Ch.'],
+			colors: ['#0000CC'],
+			strokeWidth: 2  
+		}
+	);				
+
+	
+	window.onload = function() {
+		//alert("Hello\nOn load.");
+		document.getElementById("txtMeasurement").addEventListener("keydown", DataEntry);
+
+		//var str = document.getElementById("countOfMeasurement").value;
+		document.getElementById("txtMeasurement").focus();					
+	};
+	
+	function DataEntry(e) {
+		if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+		
+			enteredValue =   (document.getElementById("txtMeasurement").value).replace(',', '.');
+			
+			switch(countOfChannels){
+				// ....................................................................................
+				case 1:
+					// add new data into data array for chart
+					if (rovNumber <= graphCountOfValues){
+						// first N values into empty graph
+						data1[rovNumber] = [rovNumber, Number(enteredValue)]; 
+						data2[rovNumber] = [rovNumber, null];
+						data3[rovNumber] = [rovNumber, null];  									
+					} 
+					else {
+						// shifting graph lines
+						data1.push([rovNumber, Number(enteredValue)]);
+						data1.shift();
+						data2.push([rovNumber, null]);
+						data2.shift();
+						data3.push([rovNumber, null]);
+						data3.shift();
+					}
+					rovNumber = rovNumber + 1;
+					break;
+				
+				// ....................................................................................
+				case 2:
+					if(actualChannelNr == 1){
+						// entered value for channel 1
+						channel1 = Number(enteredValue);
+						actualChannelNr = actualChannelNr + 1;
+					}
+					else{
+						// entered value for channel 2
+						if (rovNumber <= graphCountOfValues){
+							// first N values into empty graph
+							data1[rovNumber] = [rovNumber, channel1]; 
+							data2[rovNumber] = [rovNumber, Number(enteredValue)];
+							data3[rovNumber] = [rovNumber, null];    
+						} 
+						else {
+							// shifting graph lines
+							data1.push([rovNumber, channel1]);
+							data1.shift();
+							data2.push([rovNumber, Number(enteredValue)]);
+							data2.shift();
+							data3.push([rovNumber, null]);
+							data3.shift();
+						}
+						actualChannelNr = 1;
+						rovNumber = rovNumber + 1;
+					}
+					break;
+				
+				// ....................................................................................
+				case 3:
+					if(actualChannelNr == 1){
+						// entered value for channel 1
+						channel1 = Number(enteredValue);
+						actualChannelNr = actualChannelNr + 1;
+					}
+					else{
+						if(actualChannelNr == 2){
+							// entered value for channel 2
+							channel2 = Number(enteredValue);
+							actualChannelNr = actualChannelNr + 1;									
+						}
+						else{
+							// entered value for channel 3
+							if (rovNumber <= graphCountOfValues){
+								// first N values into empty graph
+								data1[rovNumber] = [rovNumber, channel1]; 
+								data2[rovNumber] = [rovNumber, channel2];
+								data3[rovNumber] = [rovNumber, Number(enteredValue)];   
+							} 
+							else {
+								// shifting graph lines
+								data1.push([rovNumber, channel1]);
+								data1.shift();
+								data2.push([rovNumber, channel2]);
+								data2.shift();
+								data3.push([rovNumber, Number(enteredValue)]);
+								data3.shift();
+							}
+							actualChannelNr = 1;
+							rovNumber = rovNumber + 1;									
+						}
+					}
+					break;							
+			}
+			
+			// common
+			g1.updateOptions( { 'file': data1 } );
+			g2.updateOptions( { 'file': data2 } );
+			g3.updateOptions( { 'file': data3 } );
+			this.value = "";
+			
+		}
+	}
+	
+	function ChannelCountChanged() {
+		// alert("ChannelCountChanged to " + document.getElementById("countOfChannels").value);
+		countOfChannels = Number(document.getElementById("countOfChannels").value);
+		document.getElementById("txtMeasurement").focus();
+	}
+	
+	</script>
+		
+		
+      </div>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
