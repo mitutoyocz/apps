@@ -21,6 +21,10 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="skel_css/normalize.css">
   <link rel="stylesheet" href="skel_css/skeleton.css">
+  
+  <style>
+	.channelValue { font-size:55px; color:#aaaaaa; text-align: right; margin: 0px 100px 0px 55px; float:left;}
+  </style>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -42,7 +46,7 @@
 		<h3>Measuring data collection and presentation</h3>
 
 		<input type="text" id="txtMeasurement"/>
-		<div>Count of channels:&nbsp;
+		<div style="float:right">Count of channels:&nbsp;
 			<select id="countOfChannels" onchange="ChannelCountChanged()" style="width: 90px">
 			  <option value=1>1</option>
 			  <option value=2>2</option>
@@ -50,10 +54,15 @@
 			</select>
 		</div>
 		
-		<div id="graphdiv" style="width:100%; height:500px;"></div>
+		<div>
+			<div id="channelValue1" class="channelValue">&nbsp;</div>
+			<div id="channelValue2" class="channelValue">&nbsp;</div>
+			<div id="channelValue3" class="channelValue">&nbsp;</div>
+		</div>
+		
+		<div id="graphdiv" style="width:100%; height:500px; clear:left;"></div>
 		
 		<p>&nbsp;</p>
-		
 															
 		
 		<script>
@@ -63,8 +72,9 @@
 		
 		var countOfChannels = 1;
 		var actualChannelNr = 1;
-		var channel1 = 0;
-		var channel2 = 0;
+		var channel1 = "";
+		var channel2 = "";
+		var channel3 = "";
 		var graphCountOfValues = 50;
 		var enteredValue;
 		
@@ -101,7 +111,7 @@
 		
 		function DataEntry(e) {
 			var minSec = ""; 
-			if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+			if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
 			
 				enteredValue =   (document.getElementById("txtMeasurement").value).replace(',', '.');
 				
@@ -113,13 +123,14 @@
 					// ....................................................................................
 					case 1:
 						// add new data into data array for chart
+						channel1 = Number(enteredValue);
 						if (rovNumber <= graphCountOfValues){
 							// first N values into empty graph
-							data[rovNumber] = [rovNumber, Number(enteredValue), null, null];   
+							data[rovNumber] = [rovNumber, channel1, null, null];   
 						} 
 						else {
 							// shifting graph lines
-							data.push([rovNumber, Number(enteredValue), null, null]);
+							data.push([rovNumber, channel1, null, null]);
 							data.shift();
 						}
 						rovNumber = rovNumber + 1;
@@ -134,13 +145,14 @@
 						}
 						else{
 							// entered bvalue for channel 2
+							channel2 = Number(enteredValue);
 							if (rovNumber <= graphCountOfValues){
 								// first N values into empty graph
-								data[rovNumber] = [rovNumber, channel1, Number(enteredValue), null];   
+								data[rovNumber] = [rovNumber, channel1, channel2, null];   
 							} 
 							else {
 								// shifting graph lines
-								data.push([rovNumber, channel1, Number(enteredValue), null]);
+								data.push([rovNumber, channel1, channel2, null]);
 								data.shift();
 							}
 							actualChannelNr = 1;
@@ -163,13 +175,14 @@
 							}
 							else{
 								// entered value for channel 3
+								channel3 = Number(enteredValue);
 								if (rovNumber <= graphCountOfValues){
 									// first N values into empty graph
-									data[rovNumber] = [rovNumber, channel1, channel2, Number(enteredValue)];   
+									data[rovNumber] = [rovNumber, channel1, channel2, channel3];   
 								} 
 								else {
 									// shifting graph lines
-									data.push([rovNumber, channel1, channel2, Number(enteredValue)]);
+									data.push([rovNumber, channel1, channel2, channel3]);
 									data.shift();
 								}
 								actualChannelNr = 1;
@@ -182,7 +195,9 @@
 				// common
 				g.updateOptions( { 'file': data } );
 				this.value = "";
-				
+				document.getElementById("channelValue1").innerHTML = channel1;
+				document.getElementById("channelValue2").innerHTML = channel2;
+				document.getElementById("channelValue3").innerHTML = channel3;
 			}
 		}
 		

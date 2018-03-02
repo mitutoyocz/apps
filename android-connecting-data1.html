@@ -81,16 +81,9 @@
 
         <div class="divPanel notop page-content">
 
-            <div class="breadcrumbs">
-                Home &nbsp;/&nbsp; <span><a href="android-connecting.html">Connecting Android devices</a></span>
-            </div>
-
             <div class="row-fluid">
             <!--Edit Main Content Area here-->
                 <div class="span12" id="divMain">
-
-                    <h1>Form of results (example, Javascript)</h1>
-                    <hr>
 
 					<div alert class="alert alert-lok">Enter the value using connected Mitutoyo measuring instrument. Use USB HID data cable for it + press button Data.
 					<br />
@@ -106,9 +99,20 @@
 					
 					<div id="graphdiv" style="width:1000px; height:500px;"></div>
 					
-					<p>&nbsp;</p>
+					<p>
+						<button type="button" onclick="RefreshDataTable()">Refresh data in table</button>
+					</p>
 					
-					<table id="tableOfMeasurements" class="tableOfMeasurements" width="220px">
+					<table id="tableOfMeasurements" class="tableOfMeasurements" width="240px" style="float:left">
+					  <tr>
+						<th>Nr.</th>
+						<th>Meas.1</th> 
+						<th>Meas.2</th> 
+						<th>Meas.3</th> 
+					  </tr>
+					</table>
+					
+					<table id="tableOfMeasurements2" class="tableOfMeasurements" width="240px">
 					  <tr>
 						<th>Nr.</th>
 						<th>Meas.1</th> 
@@ -171,6 +175,10 @@
 				function ChannelCountChanged() {
 					alert("ChannelCountChanged to " + document.getElementById("countOfChannels").value);
 					document.getElementById("txtMeasurement").focus();
+				}
+				
+				function RefreshDataTable(){
+				
 				}
 				
 				</script>
