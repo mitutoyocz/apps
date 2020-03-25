@@ -36,6 +36,17 @@
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
 
     <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+		.channelValue { font-size:55px; color:#aaaaaa; text-align: right; margin: 0px 100px 0px 55px; float:left;}
+		video {
+		  width: 420px   !important;
+		  height: auto   !important;
+		  margin-left: auto;
+		  margin-right: auto;
+		  display: block;
+		}
+	</style>
 </head>
 <body id="pageBody">
 
@@ -54,12 +65,13 @@
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
-						<div class="navbar">
-							<button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
-								NAVIGATION <span class="icon-chevron-down icon-white"></span>
-							</button>
-							
-						</div>
+                    <div class="navbar">
+                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                        </button>
+
+						
+						
                     </div>
 
                 </div>
@@ -77,50 +89,61 @@
         <div class="divPanel notop page-content">
 
             <div class="breadcrumbs">
-                
+                <a href="index.html">Home</a> &nbsp;/&nbsp; <span>TIR measurement using linear gauges and MH couner</span>
             </div>
 
             <div class="row-fluid">
             <!--Edit Main Content Area here-->
                 <div class="span12" id="divMain">
 
-                    <h1>Stránky aplikační podpory</h1>
-                    <hr>
-                    
-					<p>Tato stránka představuje <strong>základní rozcestník (index)</strong> a seznam pro několik paralelních témat týkajících se zejména komunálních měřidel a déle systémů pro sběr a zpracování dat.
-					</p>
+					<h1>TIR measurement using linear gauges and MH couner</h1>
+					
+					<img src="images/TirEh1.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">
+					<p>Workplace for runout measurement. Runout is measured on the tube-form workpiece on three positions. Originally the measurement was realized using three standard indicators with manual reading and evaluation min-max by each tube turn. Tube turns are realized manually by the hand. Measurement consumed a lot of time and was affected a lot of errors due to human factor.
 					<br />
-					
-					<h3>Měření a zpracování dat (measuring and data processing)</h3>
-					<ul>
-						<li><a href="android-connecting.html">Připojení komunálních měřidel Mitutoyo k Android zařízením.</a>
-						<br /><i>Connecting of Mitutoyo small instruments with Android devices.</i></li>
-						<li><a href="skel-meas1.html">Příklad JavaScript řešení pro záznam a grafickou prezentaci dat ve společném grafu (až 3 kanály).</a>
-						<br /><i>JavaScript example for recording and graphic data presentation (in common diagram).</i></li>
-						<li><a href="skel-meas1.html">Příklad JavaScript řešení pro záznam a grafickou prezentaci dat v oddělených grafech (až 3 kanály).</a>
-						<br /><i>JavaScript example for recording and graphic data presentation (in separate diagrams).</i></li>
-					</ul>
-					
-					<h3>Automatizace (automation)</h3>
-					<ul>
-						<li><a href="QuickImageVideo1.html">Video QuickImage prototypová instalace pro automatickou kontrolu. Ukázka schopnosti plně automatizovaného běhu a možností napojení na další zařízení.</a>
-						<br /><i>Video: QuickImage prototype for automatic product sorting. Shows the possibility for full automatic run and for independent hardware control.</i></li>
-						<li><a href="LsmFanucVideo.html">Laser Scan Micrometer with the FANUC robot. Ukázka možnosti spolupráce robota s měřícím zařízením.</a>
-						<br /><i>Video: Laser Scan Micrometer with the FANUC robot. Automation example.</i></li>
-						<li><a href="LsmFanucVideoMSV2018.html">Laser Scan Micrometer and SJ-410 with the FANUC robot. Ukázka možnosti spolupráce robota s měřícím zařízením (MSV Brno 2018).</a>
-						<br /><i>Video: Laser Scan Micrometer plus SJ-410 with the FANUC robot. Automation example.</i></li>
-						<li><a href="SignalOutputIndicatorSaw.html">Simple automation in saw sharpening using of signal indicator 543-350B and PLC.</a>
-						<br /><i>Video: jednoduchá automatizace s použitím úchylkoměru 543-350B s digitálními výstupy s připojením na PLC.</i></li>
-						<li><a href="TirJMeasurementEvCounter.html">TIR measurement using linear gauges and MH couner</a>
-						<br /><i>Měření házení s použitím lineárních snímačů a MH čitačů.</i></li>
-					</ul>
-					
-					<h3>Lineární odměřovací pravítka (linear scales)</h3>
-					<ul>
-						<li><a href="../scales/index.html">Samostatný web věnovaný NC i DRO lineárním odměřovacím pravítkům.</a>
-						<br /><i>Stand-alone website for DRO and NC linear scales. In Czech language only.</i></li>
-					</ul>
-		                            
+					In new configuration are used LGF linear gauges instead of indicators. Te are connected each to own EH counter. Each counter can realize function MIN, MAX and TIR. Common resetting all of the counters are realized by pressing of a footswitch.
+					</p>
+					<hr />
+					<p>Stanoviště na měření házení. Házení je měřeno na výrobku ve tvaru trubky na třech stanovených místech. Původně bylo měření prováděno pomocí tří úchylkoměrů s manuálním odčítáním min a max hodnoty při každé otáčce trubky. Trubkou obsluha při měření otáčí volně rukou. Měření bylo pomalé a výsledná přesnost byla značně ovlivněna pečlivostí obsluhy.
+					<br />
+					V novém uspořádání byly místo úchylkoměrů použity lineární snímače LGF připojené k samostatným EH čítačům (zobrazovacím jednotkám). Uvedené čítače dokáží mj. samy realizovat průběžné zachytávání a vyhodnocování hodnot v režimech MIN, MAX a TIR (= MAX - MIN). Společné nulování čítačů po vložení nového dílu je realizováno stisknutím nožního spínače.
+					</p>
+					<p>&nbsp</p>
+					<img src="images/TirEh2.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">
+					<br />
+					<p>Basic functional set-up after component unpacking. Pay attention to common power supply for all units using once power adapter. It is important for future join of sone inputs or outputs (common ground).
+					</p>
+					<hr />
+					<p>Základní funkční zapojení sestavy po vybalení komponent. Za zmínku stojí realizace společného napájení čítačů z jediného zdroje. To je důležité pro budoucí společné propojení některých vstupů a výstupů (společná země).
+					</p>
+					<p>&nbsp</p>
+					<img src="images/TirEh3.jpg" class="img-polaroid" style="margin:5px 0px 15px;" alt="">
+					</p>
+					<p>Wiring from the back includes data communication cables. In the second realization phase is request for <b>data transfer to the computer</b>. There will be realized the tolerance evaluation and final decision OK / NOK. With blue and violet point are denoted RS-LINK cables, they allow bus connection of counters 3 -> 2, 2 -> 1 ana finally 1 -> PC using RS232.
+					</p>
+					<hr />
+					<p>Propojení zezadu včetně kabelů pro přenos dat - ve druhé fázi realizace je požadavkem <b>přenos dat do počítače</b>, kde bude prováděno finální vyhodnocení tolerancí a výsledné stanovení OK / NOK. Modře a fialově jsou označené kabely propojení RS-LINK, které umožňují řetězené propojení jednotek 3 -> 2, 2 -> 1 a finálně 1 -> PC pomocí RS232.
+					</p>
+					<p>&nbsp</p>
+					<p style="text-align:center">
+						<img src="images/TirEh4.jpg" style="margin:5px 0px 15px;" alt="">
+					</p>
+					<p>Detail of gauge fastening. Green parts server for protection of gauges only. They avoid tube insertion in the direction from top to down perpendicular to gauge spindles.
+					</p>
+					<hr />
+					<p>Detail upevnění snímačů. Zelené díly slouží k ochraně snímačů, resp. zabraňují vložení trubky do přípravku shora kolmo ke vřetenům snímačů, kdy by při neopatrném pohybu mohlo dojít ke kolmému střetu dílu s vřetenem a jeho ohnutím. Díky ochranám je nutné díl vkládat šikmo zepředu ve směru os vřeten snímačů.
+					</p>
+					<p>&nbsp</p>
+					<p style="text-align:center">
+						<img src="images/TirEh5.jpg" style="margin:5px 0px 15px;" alt="">
+					</p>
+					<p>Counters are reset by wire in the realization phase No. 1. The footswitch on AX input on the I/O connector is used for it. But software control using RS232 command will be used for resetting in realization phase No. 2. From the I/O connector would be possible to use other signals too, for example for external lights for tolerance evaluation.
+					</p>
+					<hr />
+					<p>V realizační fázi 1 je nulování čítačů prováděno hardwarově pomocí pedálu a AX vstupu na konektoru I/O rozhraní. Ve finální fázi bude realizováno softwarově pomocí RS232 příkazu z řídícího počítače. Z výstupního konektoru by bylo možné vyvést i výstupní signály pro externí optickou signalizaci tolerančního vyhodnocení.
+					</p>
+				
+				
                 </div>
             <!--End Main Content Area-->
             </div>
@@ -195,14 +218,11 @@
         </div>
     </div>
 </div>
-<br /><br /><br />
+<br />
 
 <script src="scripts/jquery.min.js" type="text/javascript"></script> 
 <script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="scripts/default.js" type="text/javascript"></script>
-
-
-
 
 
 </body>
