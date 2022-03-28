@@ -148,11 +148,11 @@
 						<li>součtové nebo rozdílové uspořádání snímačů. Ve výsledku se tak dvojice snímačů chová jako jediný snímač s jedinou výstupní hodnotou.</li>
 					</ul> 
 					
-					<p>Snímače v libovolném z uvedených zapojení mohou pracovat ve standardním režimu (aktuální hodnoty) nebo v režimu zachycení mezních hodnot (MIN, MAX, TIR). Ke každému snímači lze použít tří nebo pětistupňové toleranční vyhodnocení s výstupem na IO konektor.<br />
+					<p>Snímače v libovolném z uvedených zapojení mohou pracovat ve standardním režimu (aktuální hodnoty) nebo v režimu zachycení mezních hodnot (MIN, MAX, TIR). U každého snímače lze použít třístupňové toleranční vyhodnocení s výstupem na IO konektor. IO výstup tolerančího vyhodnocení je jen jeden (3 stavy, 3 vývody), takže výstupní stavy odpovídají tomu snímači, jehož hodnota se právě zobrazuje ne displeji (lze přepnout).<br />
 					Protože modul čítače umí zobrazovat jen jednu hodnotu, lze při dvou zapojených snímačů v samostatném režimu přepínat na displej hodnotu z kanálu 1 nebo 2 pomocí tlačítka pod předním krytem.
 					</p>
 					
-					<p>Jednotlivé čítače je možné sdružovat ("stackovat") až do počtu 8 jednotek. Při sdružení dojde k propojení všech jednotek pomocí konektoru na bocích modulů, takže např. <b>přívod napájení se realizuje přivedením napětí pouze na jeden modul</b>. V souvislosti s tolerančním vyhodnocením jsou na jednotlivých modulech samostatné IO výstupy dílčího tolerančního vyhodnocení z jednotlivých snímačů, avšak k dispozici je i generální signál ALL GO, který je aktivní v p5ípadě, že tolerance ze všech jednotek jsou OK. Toto velmi usnadňuje a zjednodušuje řešení automatizačních úloh s celkovým posouzením GO / NOT GO.
+					<p>Jednotlivé čítače je možné sdružovat ("stackovat") až do počtu 8 jednotek. Při sdružení dojde k propojení všech jednotek pomocí konektoru na bocích modulů, takže např. <b>přívod napájení se realizuje přivedením napětí pouze na jeden modul</b>. V souvislosti s tolerančním vyhodnocením jsou na jednotlivých modulech samostatné IO výstupy dílčího tolerančního vyhodnocení z jednotlivých snímačů, avšak k dispozici je i generální signál ALLGO, který je aktivní v případě, že tolerance ze všech jednotek jsou OK. Toto velmi usnadňuje a zjednodušuje řešení automatizačních úloh s celkovým posouzením GO / NOT GO.
 					</p>
 					<p><b>Popis a rozložení vývodů IO konektoru (pinout) je <a href="docs/EJ_counter_pinout.pdf">zde</a>.</b>
 					</p>
