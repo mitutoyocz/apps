@@ -1,0 +1,262 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mitutoyo Česko</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Html5TemplatesDreamweaver.com">
+
+    <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Icons -->
+    <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
+    <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <!--[if lt IE 8]>
+        <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
+
+    <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+		.channelValue { font-size:55px; color:#aaaaaa; text-align: right; margin: 0px 100px 0px 55px; float:left;}
+		video {
+		  width: 100%    !important;
+		  height: auto   !important;
+		}
+	</style>
+	
+</head>
+<body id="pageBody">
+
+<div id="divBoxed" class="container">
+
+    <div class="transparent-bg" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: -1;zoom: 1;"></div>
+
+    <div class="divPanel notop nobottom">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div id="divLogo" class="pull-left">
+                        <a href="index.html" id="divSiteTitle"><img src="images/mit_logo.png" alt="Mitutoyo" title="Mitutoyo" /></a>
+                        <br />
+                        <a href="index.html" id="divTagLine">Stránky aplikační podpory</a>	
+                    </div>
+
+                    <div id="divMenuRight" class="pull-right">
+                    <div class="navbar">
+                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                        </button>
+
+						
+						
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div id="contentInnerSeparator"></div>
+                </div>
+            </div>
+    </div>
+
+    <div class="contentArea">
+
+        <div class="divPanel notop page-content">
+
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> &nbsp;/&nbsp; <span>Connection and communication of EJ-counters</span>
+            </div>
+
+            <div class="row-fluid">
+            <!--Edit Main Content Area here-->
+                <div class="span12" id="divMain">
+
+					<h1>Připojení a komunikace EJ-counterů s prostředím, díl 1 </h1>
+					
+					<h2>Použití EJ-counterů s připojením přes IO rozhraní</h2>
+					
+					<p>Uvedený příklad reprezentuje nejjednodušší aplikaci EJ counteru, která funkčně odpovídá <a href="EgEhCounterApp.html">této aplikaci s EG counterem</a>. Díky "hardwarovému" připojení pomocí fyzických IO vývodů příklad zároveň velmi dobře ukazuje důležité kroky a stavy měřícího procesu, které jsou funkčně totožné i u aplikací, které přímo zpracovávají naměřené hodnoty získané přes modul datového rozhraní. Tyto aplikace budou popsány v následujících kapitolách.
+					</p>
+					<p>U modelové aplikace byl pro zjednodušení použit jediný EJ counter, nicméně obdobným způsobem lze v reálné aplikaci použít společně až 8 jednotek.
+					</p>
+					
+					<h3>Funkce a základní nastavení</h3>
+					<p>Modelové měřící zařízení používá jeden snímač (<b>LG-100-0525</b> 542-194: 25 mm, rozlišení 0,5 µm ) a jeden čítač <a href="docs/EJ_counter_99MBC139A.pdf"><b>EJ-102N</b></a>. Snímač je osazen kulovým dotekem, aby bylo možno lépe "podsouvat" měřený díl bez nutnosti samostatného zvedání vřetene snímače. Úkolem zařízení je změřit výšku výrobku a provést vyhodnocení, zda rozměr je v požadované toleranci či nikoliv.<br />V rámci přípravy tohoto měřícího pracoviště byly ovládacími tlačítky na čelní straně modulu (pod průhledným víčkem) nastaveny tyto hodnoty (viz <a href="docs/EJ_counter_99MBC139A.pdf">návod, kap. 3.2.5</a>):
+					</p>
+					<p style=" padding:0px 25px 0px 25px;">
+					Horní mez: &nbsp;110,000<br />
+					Dolní mez:  &nbsp;109,940<br />
+					Hodnota Preset: &nbsp;96,000<br />					
+					Display at startup[09] = 1 <i>(změna proti defaultní hodnotě 0)</i>
+					</p>
+				
+					<p>Připojené zařízení v tomto případě simuluje jednoduchý IO box, který pomocí 3 LED indikuje stavy na logických výstupech čítače. Bílým tlačítkem pak umožňuje generovat "výstup ze zařízený", který je přiveden na odpovídající vstup čítače. Veškeré signály jsou přivedeny vodiči k IO konektoru modulu. Konkrétně je propojení realizováno pěti vodiči: 3 výstupy, 1 vstup a společná zem. Ve skutečné aplikaci by místo tohoto IO boxu mohl být použit PLC, kontrolér robota nebo přímo technologické rozhraní nějakého stroje.
+					</p>
+
+					<h3>Realizace</h3>					
+
+					<p>Vlastní provedení a funkcionalitu zařízení můžete vidět zde:</p>
+					
+					<video controls>
+					  <source src=".\videos\EjCounterInterface1.mp4" type="video/mp4" class="img-polaroid">
+					</video>
+					<p><i>Mihotání LED prvků displeje se projevuje jen na videozáznamu, kde vzniká interferencí mezi obnovovací frekvencí displeje a snímkováním videa.
+					</i></p>
+					
+					<h3>Popis jednotlivých fází</h3>
+					<h4>1) Připojení napájení</h4>
+					<div class="alert alert-error">     
+						<p>Je třeba vždy mít na paměti, že pracujeme s inkrementálními snímači (nikoli ABSOLUTE). S vypnutím napájení tedy systém ztratí údaj o poloze. Tento údaj je nezbytné po opětovném připojení napájení obnovit buď novým nastavené vzhledem k reálnému dílu (normálu) nebo načíst dříve uložený referenční bod snímače. Tato druhá možnost platí jen v případě, že používáme snímače s referenčním bodem.
+						</p>
+					</div>
+					<p>Po zapnutí napájení dojde k vynulování čítače (čtěte poznámku na konci odstavce). Nicméně snímač je v okamžiku připojení napájení obvykle v nedefinované poloze - zde musíme počítat i se situacemi, že k náhodné ztrátě napájení může dojít kdykoliv v průběhu pracovního cyklu. Proto v tomto okamžiku rozhodně nelze brát údaj čítače jako platný rozměr a tak musíme následně po zapnutí zajistit nové provázání hodnot mezi skutečnou polohou snímače a zobrazovaným údajem.
+					</p>
+					
+					<p><i>POZNÁMKA: automatické vynulování čítače po zapnutí napájení souvisí s nastavenou hodnotou Display at startup[09] = 1. Defaultně je tento parametr nastaven na hodnotu 0. V takovém případě se po zapnutí napájení na displeji objeví znaky "-----------", což signalizuje stav "Counter stand-by". Tento stav lze zrušit vnějším signálem CLEAR (nebo stisknutí tlačítka SEL/CE), který zároveň provede vynulování čítače. Přednastavením na hodnotu 1, tj. "Counter displayed", jsme si ušetřili jeden inicializační krok a jeden další vodič pro signál CLEAR.</i>
+					</p>
+					
+					<h4>2) Reference a PRESET</h4>
+					<p>Rozměrová reference je realizovaná dvěma základními měrkami s výsledným rozměrem 109,000 mm. Jedná se o rozměr blízký měřené hodnotě 110 mm. Po vložení bloku měrek je <b>tlačítkem vygenerován signál PRESET</b> na příslušném vstupu čítače. Tím dojde k převzetí přednastavené hodnoty nastavené v čítači, uvedená hodnota se ihned zobrazí na displeji. Tím je zreferování měřícího systému dokončeno.
+					</p>
+					
+					<p>Ve skutečných měřících přípravcích, které bývají tvarově složité a neumožňují použití univerzálně dostupných normálů, se jako reference používá <b>ověřený referenční díl</b>, tj. díl přesně změřený jinými metodami. Naměřené rozměry je pak třeba přednastavit jako referenční pro použití se signálem PRESET.
+					</p>
+					
+					<p>V rámci našeho funkčního modelu bylo po vyjmutí bloku měrek v <b>kroku 2b)</b> provedeno předvedení stability systému zpětným vložením referenční měrky - na displeji je dle očekávání znovu zcela přesná jmenovitá hodnota 19,000. Při reálném měření resp. nastavování systému by byl tento krok samozřejmě neprováděl.
+					</p>
+					
+					<h4>3) Měření</h4>
+					<img src="images/EjCounter_EJ102tol.png" style=" padding:0px 25px 0px 25px; float: right;" alt="">
+					<p>Ve fázi měření je prováděno rutinní vkládání výrobků do měřícího systému a sledování výsledného vyhodnocení OK/NOT OK na panelu LED diod na IO boxu vpravo. Všimněte si též symbolů vyhodnocení tolerance vpravo vedle hlavního displeje čítače. Tato signalizace je velmi užitečné při ladění systému, kontrole funkčnosti a v případech, kdy stavy na výstupech z IO konektoru nejsou na připojeném zařízení jednoduše pozorovatelné.
+					</p>
+
+					<p>V souvislosti se stavy na výstupech je třeba zdůraznit následující věc:
+					</p>
+					<div class="alert alert-success">     
+						<p>Je zřejmé, vždy je aktivní nějaký stav = vždy svítí nějaká LED. Z povahy věci nejvíce svítí LED NOT OK - typicky v případě, že není vložen výrobek. Znamená to tedy, že výsledný stav je třeba vyhodnocovat pouze v jasně definovaný okamžik, kdy je díl vložený a přípravek je uzavřen, vřetena snímačů dolehla na díl atd. Jedná se o tzv. <b>trigrování neboli vyhodnocování stavu v přesně definovaný okamžik</b>.<br /> 
+						Z uvedeného důvodu tedy nelze např. signál NOT OK jednoduše spojit s nějakou sirénou nebo povelem k zastavení linky. Tato podmínka správného okamžiku vyhodnocený výsledu se ukáže jako podstatnou také v dalších případech, kdy se budeme zabývat vyhodnocováním stavů na základě hodnot přebíraných ze systému pomocí komunikačního modulu.
+						</p>
+					</div>		
+
+					<h4>4) Ověření</h4>
+					<p>Je důležité se <b>čas od času ujistit, že celý systém měření funguje správně</b>, že nedošlo k deformacím přípravku, opotřebení doteků či dalším jevům, které by mohly ovlivnit přesnost výsledku. Toto ověření se provádí vložením referenčního dílu a porovnáním výsledných hodnot. Náš konkrétní příklad při zpětném ověření po sérii měření ukázal vynikající hodnotu 109,000, která mj. <b>dokládá špičkové vlastnosti Mitutoyo snímačů</b>, neboť za daných podmínek nebyl naměřen rozdíl ani 0,5 µm, což odpovídá citlivosti (kroku) snímače.
+					</p>
+				
+					<h2>Závěrečné poznámky</h2>
+					<p>U aplikací realizovaných samotnými čítači s připojením pomocí logických IO se počítá s tím, že pro každou měřenou hodnotu bude použit jeden counter. Jen tak se dá rozumně realizovat nastavení Preset hodnot a tolerancí pro jednotlivé rozměry. Samozřejmě je výhodné připojit dva snímače na jeden modul v případě, že se měří v diferenciálním uspořádání se dvěma snímači pro jeden rozměr. Takové uspořádání se používá v situace, že nelze měřit proti pevnému bodu. Samotný PRESET signál lze snadno rozvést k odpovídajícím vstupů všech EJ-102 modulů. To je obecná vlastnost, která se konečně týká i jiných signálů přiváděných na vstupy.
+					</p>
+					
+					<p>Co se týče výsledného posouzení měřeného dílu jako OK / NOT OK připoužití více counterů, lze pracovat buď s výstupy jednotlivých modulů (= rozměrů) a nebo s celkovým signálem ALLGO při správně nastaveném parametru ERR/ALLGO[10] = 1.
+					</p>
+					
+					<h2>Odkazy a další informace</h2>
+					<p><a href="EEgEhCounterApp.html">Aplikace s lineárními snímači a EG (EH) countery</a></p>
+					<p><a href="EjCounterApp.html">Nová řada lineárních snímačů a EJ counterů</a></p>
+					<p>Použití EJ-counterů s připojením přes datové USB rozhraní - <b>PŘIPRAVUJE SE</b></p>
+				
+                </div>
+            <!--End Main Content Area-->
+            </div>
+
+            <div id="footerInnerSeparator"></div>
+        </div>
+    </div>
+
+    <div id="footerOuterSeparator"></div>
+
+<div id="divFooter" class="footerArea">
+
+        <div class="divPanel">
+
+            <div class="row-fluid">
+                <div class="span3" id="footerArea1">
+                
+                    <h3>O těchto stránkách</h3>
+
+                    <p>Obsah těchto stránek je určen pro poskytování aplikační podpory. Jde o prezentaci podrobnějších informací k některým produktům o demonstraci příkladů úspěšných řešení.
+					<br />  
+					Stránky poskytují doplňující informace k hlavním stránkám společnosti 
+					<a href="http://www.mitutoyo.cz" title="Email">www.mitutoyo.cz</a>.</p>                    
+                </div>
+                
+                <div class="span3" id="footerArea2">
+				
+                </div>
+                
+                <div class="span3" id="footerArea3">
+                </div>
+                
+                <div class="span3" id="footerArea4">
+
+                    <h3>Mitutoyo Česko s.r.o.</h3>  
+                                                               
+                    <ul id="contact-info">
+                    <li>                                    
+                        <i class="general foundicon-phone icon"></i>
+                        <span class="field">Tel.:</span>
+                        <br />
+                        +420 417 514 023                                                               
+                    </li>
+                    <li>
+                        <i class="general foundicon-mail icon"></i>
+                        <span class="field">Email:</span>
+                        <br />
+                        <a href="mailto:scales@mitutoyo.cz" title="Email">scales@mitutoyo.cz</a>
+                    </li>
+                    <li>
+                        <i class="general foundicon-home icon" style="margin-bottom:50px"></i>
+                        <span class="field">Adresa:</span>
+                        <br />
+                        Dubská 1626<br />
+                        415 01 Teplice<br />
+                        Česká republika
+                    </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <br /><br />
+            <div class="row-fluid">
+                <div class="span12">
+                    <p class="copyright">
+                        Copyright © 2017 Mitutoyo Česko s.r.o. Všechna práva vyhrazena.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+
+<script src="scripts/jquery.min.js" type="text/javascript"></script> 
+<script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="scripts/default.js" type="text/javascript"></script>
+
+
+</body>
+</html>
