@@ -118,7 +118,7 @@
 
 					<h3>Realizace</h3>					
 
-					<p>Vlastní provedení a funkcionalitu zařízení můžete vidět zde:</p>
+					<p>Vlastní provedení a funkcionalitu zařízení můžete vidět na tomto videu:</p>
 					
 					<video controls>
 					  <source src=".\videos\EjCounterInterface1.mp4" type="video/mp4" class="img-polaroid">
@@ -157,7 +157,7 @@
 					</p>
 					<div class="alert alert-success">     
 						<p>Je zřejmé, vždy je aktivní nějaký stav = vždy svítí nějaká LED. Z povahy věci nejvíce svítí LED NOT OK - typicky v případě, že není vložen výrobek. Znamená to tedy, že výsledný stav je třeba vyhodnocovat pouze v jasně definovaný okamžik, kdy je díl vložený a přípravek je uzavřen, vřetena snímačů dolehla na díl atd. Jedná se o tzv. <b>trigrování neboli vyhodnocování stavu v přesně definovaný okamžik</b>.<br /> 
-						Z uvedeného důvodu tedy nelze např. signál NOT OK jednoduše spojit s nějakou sirénou nebo povelem k zastavení linky. Tato podmínka správného okamžiku vyhodnocený výsledu se ukáže jako podstatnou také v dalších případech, kdy se budeme zabývat vyhodnocováním stavů na základě hodnot přebíraných ze systému pomocí komunikačního modulu.
+						Z uvedeného důvodu tedy nelze např. signál NOT OK jednoduše spojit s nějakou sirénou nebo povelem k zastavení linky. Tato podmínka správného okamžiku vyhodnocený výsledu se ukáže jako podstatnou také v dalších případech, kdy se budeme zabývat vyhodnocováním stavů na základě hodnot přebíraných ze systému pomocí komunikačního modulu. V našem případě, kdy pracujeme s hardwarovými IO signály by např. bylo  potřebné, aby obsluha po správném založení dílu stiskla tlačítko (pedál) signalizující stav „Měřit“. Jen v tom okamžiku by se převzala hodnota z tolerančních výstupů, která by tak správně odpovídala stavu OK / NOT OK.
 						</p>
 					</div>		
 

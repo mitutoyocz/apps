@@ -1,0 +1,436 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mitutoyo Česko</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Html5TemplatesDreamweaver.com">
+
+    <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Icons -->
+    <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
+    <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <!--[if lt IE 8]>
+        <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
+
+    <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+		.channelValue {font-size:55px; color:#aaaaaa; text-align: right; margin: 0px 100px 0px 55px; float:left;}
+		
+		.prgNote {color:#009000;}
+		
+		
+		table.withoutBorder {
+		  border: 1px solid #FFFFFF;
+		}
+		table.withoutBorder td, table.withoutBorder th {
+		  border: 1px solid #FFFFFF;
+		  padding: 1px 20px 1px 20px;
+		}
+		
+		table.withoutBorderPadding {
+		  border: 1px solid #FFFFFF;
+		}
+
+		video {
+			width: 100%    !important;
+			height: auto   !important;
+		}
+	</style>
+	
+</head>
+<body id="pageBody">
+
+<div id="divBoxed" class="container">
+
+    <div class="transparent-bg" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: -1;zoom: 1;"></div>
+
+    <div class="divPanel notop nobottom">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div id="divLogo" class="pull-left">
+                        <a href="index.html" id="divSiteTitle"><img src="images/mit_logo.png" alt="Mitutoyo" title="Mitutoyo" /></a>
+                        <br />
+                        <a href="index.html" id="divTagLine">Stránky aplikační podpory</a>	
+                    </div>
+
+                    <div id="divMenuRight" class="pull-right">
+                    <div class="navbar">
+                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                        </button>
+
+						
+						
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div id="contentInnerSeparator"></div>
+                </div>
+            </div>
+    </div>
+
+    <div class="contentArea">
+
+        <div class="divPanel notop page-content">
+
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> &nbsp;/&nbsp; <span>Connection and communication of EJ-counters</span>
+            </div>
+
+            <div class="row-fluid">
+            <!--Edit Main Content Area here-->
+                <div class="span12" id="divMain">
+
+					<h1>Připojení a komunikace EJ-counterů s prostředím, díl 2 </h1>
+					
+					<h2>Datová komunikace a programová obsluha EJ-counterů</h2>
+					
+					<p>V současném světe je zcela běžné, že po elektronických zařízeních vyžadujeme vysoký stupeň interakce s okolím a samozřejmě i jistý komfort při jejich ovládání a zpracování dat. V případě EJ-counterů jsou tyto požadavky zajištěny prostřednictvím přídavných komunikačních modulů. Typy komunikačních modulů a základní instrukce pro jejich montáž (zakončovací člen!) jsou uvedeny v <a href="EjCounterApp.html"><b>prvním z článků této série</b></a>.
+					</p>
+					<p>Všechny typy komunikačních jednotek dovolují čtení aktuálních dat, čtení uložených hodnot nastavení a jejich zápis. Jednoduše řečeno, komunikační jednotky umožňují plné ovládání připojené sady counterů z externího systému. Připomeňme, že <b>maximální sestava je osm counterů (= až 16 snímačů) na jeden komunikační modul</b>. Takovýchto bloků pak může být v reálném systému tolik, kolik je potřeba.
+					</p>
+					
+					<h2>Komunikace s počítačem</h2>
+					
+					<p>V této části se budeme věnovat zejména <b>popisu a použití komunikace přes USB, resp. VCP</b>, která je nejjednodušší a dostupná na všech počítačích. Kromě toho, USB připojení je dostupné na všech dodávaných komunikačních modulech.
+					</p>
+					
+					<img src="images/EjCounter_DevManager.png" style=" padding:0px 0px 5px 25px; float: right;" alt="">
+					
+					<h3>Virtual Com Port</h3>
+					
+					<p>Po připojení modulů k PC se systémem Windows, které je připojené k internetu, je ve většině případů automatiky nalezen a nainstalován odpovídající driver. Toto je dobré si ověřit ve <b>Správci zařízení</b> (Device manager), kde se připojené zařízení zobrazí takto
+					</p>
+
+					<p>Pro další je důležité si zapamatoval přiřazené pojmenování komunikačního portu, v našem případě je to COM10.
+					Komunikace se zařízením se provádí formou výměny ASCII řetězců za použití typického schématu: <b>požadavek- odpověď</b> (request - response)
+					</p>
+
+					<h3>Sériový terminál</h3>
+					
+					<p>První pokus o výměnu dat může udělat opravdu každý. Potřebuje k tomu nástroj, který je nazýván Sériový terminál a je na internetu k dispozici zdarma. Známý je například <a href="https://realterm.sourceforge.io/Realterm</a>, velmi intuitivní je též <a href="drivers/SerialTerminal_ML.zip">Sériový terminál Mitutoyo</a> (nástroj z balíku MeasurLink), který se nemusí ani instalovat, stačí rozbalit kamkoliv (pouze 2 soubory!).
+					</p>
+					
+					<p>Jako první je zde třeba zvolit komunikační port (zjištěný v předchozím kroku) a nastavit parametry komunikace, které zrovna u jednotky pro EJ countery nejsou úplně typické:<br />
+					<b>Rychlost 9600 Bd, 7 datových bitů, 2 stop bity, parita sudá (even)</b>
+					</p>
+					<p>Pak již můžeme COM port otevřít (Připojit). Pokud jsme se úspěšně dostali až sem, můžeme si vyměnit první zprávy. Do řádku pro odesílaná data napíšeme třeba <b>GCJ, 0011</b>, nastavíme správnou sekvenci ukončovacích znaků na <b>{CR}{LF}</b> a odešleme. Měli bychom dostat tento výsledek:
+					</p>
+
+					<img src="images/EjCounter_SerTerm.png" alt="">
+					
+					<p><i>POZNÁMKA: na snímku obrazovky v okně vlevo nahoře je vidět, že terminál poněkud promíchal odeslaná (zelená) a přijatá (modrá) data. Nicméně komunikace jako taková ve smyslu <b>požadavek - odpověď</b> proběhla správně. Každý uživatel asi zvolí "svůj"  sériový terminám podle toho, na co je zvyklý a co mu vyhovuje.</i></p>
+					
+					<h3>Komunikační příkazy</h3>					
+
+					<p>Všechny příkazy pro komunikaci s countery jsou popsány v manuálu v kapitole USB communication format ve formátu data a odpoveď. Důležité je připomenout, že návratový řetězed (odpověď), obsahuje i tzv. error kódy, tedy informace o tom že se vše povedlo či o tom, proč se to nepovedlo. Celkem běžně se může stát, že pošleme špatný požadavek. V takovém případě se vrátí odpověď s chybovým kódem <b>4 = Undefined command</b>.
+					</p>
+					<p><b>PŘÍKLAD:</b>
+					</p>
+					<p>Požadavek: <b>GCJ,0011{CR}{LF}</b><br />
+					</p>
+					
+					<table class="withoutBorder">
+						<tr>
+						<td>0011:</td>
+						<td>0 prefix + 01 adresa EJ-102 counteru (první v pořadí z max. 8) + 1 číslo snímače na EJ-102 modulu (1 nebo 2)</td>
+						</tr>
+					</table>					
+					<br />
+					
+					<p>Odpověď: <b>GCJ,0011,0,+0010900000,L1,00{CR}{LF}</b><br />
+					</p>
+					
+					<table class="withoutBorder">
+						<tr>
+						<td>0011:</td>
+						<td>adresa snímače (dle požadavku)</td>
+						</tr>
+						<tr>
+						<td>0:</td>
+						<td>NO ERROR (COMMUNICATION)</td>
+						</tr>
+						<tr>
+						<td>+0010900000:</td>
+						<td>+109,000 (hodnota), <b>údaj o hodnotě v setinách µm je používán VŽDY s pevnou délkou (znaménko + 10 číslic) !</b></td>
+						</tr>
+						<tr>
+						<td>L1:</td>
+						<td>výsledek vyhodnocení tolerance</td>
+						</tr>
+						<tr>
+						<td>00:</td>
+						<td>NO ERROR (DEVICE)</td>
+						</tr>
+					</table>
+
+					<h2>Reálná úloha</h2>
+					<p>Aktuálním úkolem tedy bude realizovat stejnou měřící úlohu, kterou jsme realizovali při <a href="EjCounterInterface1.html"><b>Použití EJ-counterů s připojením přes IO rozhraní</b></a>. Tentokrát ale budeme chtít, aby veškeré potřebné úkony a čtení a vyhodnocení dat byly realizovány na dálku z počítače pomocí datového rozhraní.
+					</p>
+					<p>Pro to, abychom mohli úspěšně měřit jsme potřebovali udělat níže popsané kroky. Ty ovšem nyní uděláme pomocí příslušných příkazů z připojeného počítače:
+					</p>
+					<table>
+						<tbody>
+						<tr>
+						<td>Krok</td>
+						<td>Akce</td>
+						<td>Jak jsme udělali</td>
+						<td>Adresa<br />snímače</td>
+						<td>Požadavek</td>
+						<td>Odpověď</td>
+						</tr>
+						<tr>
+						<td>1</td>
+						<td>Přednastevní hodnoty PRESET do counteru</td>
+						<td>Tlačítky z panelu</td>
+						<td>0011</td>
+						<td>SPR,0011,+0010900000</td>
+						<td>SPR,0011,0,+0010900000,00</td>
+						</tr>
+						<tr>
+						<td>2</td>
+						<td>Nastavení přednastavené hodnoty při vloženém referenčním dílu (měrky)</td>
+						<td>Bílým IO tlačítkem</td>
+						<td>0011</td>
+						<td>PST,0011</td>
+						<td>PST,0011,0,00</td>
+						</tr>
+						<tr>
+						<td>3</td>
+						<td>Opakované měření dílu</td>
+						<td>Pohled obsluhy (1)</td>
+						<td>0011</td>
+						<td>GCJ,0011</td>
+						<td>GCJ,0011,0,+0010900000,L1,00</td>
+						</tr>
+						<tr>
+						<td>4</td>
+						<td>Ověření správné funkce systému měřením reference</td>
+						<td>Pohled obsluhy (1)</td>
+						<td>0011</td>
+						<td>GCJ,0011</td>
+						<td>GCJ,0011,0,+0010900000,L1,00</td>
+						</tr>
+						</tbody>
+					</table>
+					
+					<br />
+					<p><i><b>(1)</b> Při realizaci <a href="EjCounterInterface1.html">předchozí úlohy</a>: jsme stav vyhodnocovali jen pohledem. V zelenám komentářei o trigrování je pak uveden stisk tlačítka (šlapky) potvrzující, že díl je správně založen a výsledná hodnota resp stav na IO vývodech je platný.</i>
+					</p>
+					
+					<h3>První program</h3>
+					
+					<div class="alert alert-success">     
+						<p>Ukázky programu a programové příklady ke stažení jsou realizovány v jazyku <b>Python 3</b>. Důvodem k použití tohoto jazyka je zejména skutečnost, že kód je přenositelný na Linux, což může být pro mnoho aplikací velkou výhodou.
+						</p>
+						<p><b>DŮLEŽITÉ:</b><br />
+						<b>1) (!) změňte přiřazení COM portu na pátém řádku PORT_NUMBER = 'COM10' na port skutečně použitý na vašem počítači</b><br />
+						<b>2) uvedený kód je absolutně minimalistický.</b> Program nemá grafické uživatelské rozhraní (GUI), ovládá se tlačítky klávesnice <b>(P, R, Q)</b>, není provedeno rozdělení a formátování dat ani ošetření chyb. Je to proto, aby program s co nejmenším objemem kódu ukázal základní principy komunikace a nabídl nezbytný základ pro další práci.
+						</p>
+					</div>	
+			
+				
+					<pre>
+					<code>
+import keyboard  <i class = "prgNote"># using module keyboard</i>
+import time
+import serial	 <i class = "prgNote"># using module PySerial</i>
+
+<i class = "prgNote"># ((-0-))  serial port specification - change by your own hardware configuration!</i>
+<b>PORT_NUMBER = 'COM10'</b>
+
+<i class = "prgNote"># serial port setting and initialization</i>
+try:
+	serialOne = serial.Serial(PORT_NUMBER, baudrate=9600, bytesize=serial.SEVENBITS, parity=serial.PARITY_EVEN, stopbits=serial.STOPBITS_TWO, timeout=0.5)
+
+	<i class = "prgNote">#serialOne.open()</i>
+	serialOne.flushInput()   <i class = "prgNote"># flush input buffer, discarding all its contents</i>
+	serialOne.flushOutput()  <i class = "prgNote"># flush output buffer, aborting current output and discard all that is in buffer</i>
+	print('Serial port was opened sucessfully.')
+	
+	<i class = "prgNote"># ((-1-))  save predefined PRESET value (109,000 mm - regarding to the reference piece)</i>
+    serialOne.write(('SPR,0011,' + preset_value + '\r\n').encode())  <i class = "prgNote"># send request to the counter</i>
+    print(serialOne.readline().decode('utf-8'))  <i class = "prgNote"># print EJ-counter response</i>
+
+	<i class = "prgNote"># ==================  NEVERENDING LOOP - START  ==================</i>
+	while True:
+
+		<i class = "prgNote"># ((-2-))  PRESET (on key P)</i>
+		if keyboard.is_pressed('p'):                        <i class = "prgNote"># if key 'p' is pressed</i>
+			serialOne.write('PST,0011\r\n'.encode())    <i class = "prgNote"># send request to the counter</i>
+			print(serialOne.readline().decode('utf-8')) <i class = "prgNote"># print EJ-counter response</i>
+			time.sleep(0.5)
+
+		<i class = "prgNote"># ((-3-))  READ VALUE (on key R)</i>
+		if keyboard.is_pressed('r'):                        <i class = "prgNote"># if key 'r' is pressed</i>
+			serialOne.write('GCJ,0011\r\n'.encode())    <i class = "prgNote"># send request to the counter</i>
+			print(serialOne.readline().decode('utf-8')) <i class = "prgNote"># print EJ-counter response</i>
+			time.sleep(0.5)
+
+		<i class = "prgNote"># ((-4-))  QUIT - PROGRAM END (on key Q)</i>
+		if keyboard.is_pressed('q'):                        <i class = "prgNote"># if key 'q' is pressed</i>
+			print('Program was terminated - Q-key was pressed by the user.')
+			<i class = "prgNote"># serial port close</i>
+			serialOne.close()
+			break                                       <i class = "prgNote"># escape from the loop</i>
+	<i class = "prgNote"># ==================  NEVERENDING LOOP - END  ==================</i>
+
+except:
+	print('Serial port ' + PORT_NUMBER + ' is not usable. Maybe you should change the port definition: PORT_NUMBER = ' + PORT_NUMBER)
+					</code>
+					</pre>
+
+					<h3>Použití</h3>
+					
+					<p>Výsledek celého snažení v praxi je vidět na následujícím videu:
+					</p>
+					
+					<div class="alert alert-info">     
+						<p><b>Nechcete programovat, a přesto byte si to rádi zkusili?</b> V takovém případě si můžete stáhnout mírně upravený zkompilovaný kód a ten bez instalace spustit na svém počítači.
+						</p>
+						<ul>
+							<li>Stáhněte komprimovaný balíček (pokud vám to bezpečnostní politika dovolí - obsahuje EXE) a rozbalte ho do nějakého adresáře.</li>
+							<li>Připojte jednotku EJ-counteru pomocí USB, zkontrolujte COM port ve Správci zařízení.</li>
+							<li>Upravte záznam o použitém COM portu v souboru config.ini, případně upravte hodnotu PRESET dle svých podmínek.</li>
+							<li>Spusťte program. Někdy je lepší program spustit z Příkazového řádku.</li>
+						</ul>
+					</div>
+					
+					<h4>Popis</h4>
+					
+					<p>Jednotlivé fáze jsou funkčně stejné jako v předchozím případě realizovaném s využitím IO rozhraní. Tentokrát ale byla veškerá interakce s čítačem realizována s využitím komunikace po datovém rozhraní. Získali jsme i reálné míry jednotlivých testovaných kusů a nebyl by tedy problém provést toleranční vyhodnocení v počítači a dát pokyn k navazující akci - např. příkaz pro robota k odebrání dílu.
+					</p>
+					
+					<p>Protože celý systém komponent EJ-counteru dovoluje ovládat <b>všechna nastavení</b> pomocí datového rozhraní, je tak možné vytvářet velmi výkonné a sofistikované mařící systémy tak, že veškerá logika a prezentace výsledků je realizována programově v připojených počítačích a snímače s čítači budou tvořit jen technologické rozhraní a vlastní výkonnou část. Obrazně řečeno - <b>počítač bude mozkem a snímače spolu s čítači budou výkonnými orgány při realizaci měřících úloh</b>.
+					</p>
+					
+					<h4>Spolupráce s IO a možnost jejich dalšího využití</h4>
+					
+					<p>Za zvláštní zmínku stojí jedna věc. Z předchozí úlohy zůstaly v EJ-counteru <b>uložené toleranční meze a tak counter automaticky provedl toleranční vyhodnocení</b>. Výsledky odeslal v odpovědi na každý dotaz na měřenou hodnotu. Můžeme si všimnout, že v návratových řetězcích se vyskytuje <b>L1</b> pro NOT OK-, <b>L3</b> pro OK a <b>L5</b> pro NOT OK+. Zároveň je ale tato indikace patrná na LED ukazateli EJ-counteru a <b>odpovídající stavy se objevují i na logických výstupech na konektoru modulu</b>. To nám dává možnost řešit navázání do technologie jak pomocí připojeného PC, tak pomocí "drátů", které při patřičném oddělení a zesílení vedou do nějakých akčních členů. Tato variabilita může být leckdy celkem výhodná, protože z PC obvykle žádné zvláštní "dráty" nevedou a akční členy tedy nemusí být snadné k PC připojit.
+					</p>
+					
+					<p>Co se uložených tolerancí týče, je jasné, že je lze z připojeného počítače snadno změnit stajně tak, jak jsme měnili uloženou hodnotu PRESET.
+					</p>
+					
+					<h3>Profesionální řešení</h3>
+					
+					<p>Výsledek celého snažení v praxi je vidět na následujícím videu:
+					</p>
+					
+					<h2>Odkazy a další informace</h2>
+					<p><a href="EEgEhCounterApp.html">Aplikace s lineárními snímači a EG (EH) countery</a></p>
+					<p><a href="EjCounterApp.html">Nová řada lineárních snímačů a EJ counterů</a></p>
+					<p><a href="EjCounterInterface1.html">Použití EJ-counterů s připojením přes IO rozhraní</a></p>
+				
+                </div>
+            <!--End Main Content Area-->
+            </div>
+
+            <div id="footerInnerSeparator"></div>
+        </div>
+    </div>
+
+    <div id="footerOuterSeparator"></div>
+
+<div id="divFooter" class="footerArea">
+
+        <div class="divPanel">
+
+            <div class="row-fluid">
+                <div class="span3" id="footerArea1">
+                
+                    <h3>O těchto stránkách</h3>
+
+                    <p>Obsah těchto stránek je určen pro poskytování aplikační podpory. Jde o prezentaci podrobnějších informací k některým produktům o demonstraci příkladů úspěšných řešení.
+					<br />  
+					Stránky poskytují doplňující informace k hlavním stránkám společnosti 
+					<a href="http://www.mitutoyo.cz" title="Email">www.mitutoyo.cz</a>.</p>                    
+                </div>
+                
+                <div class="span3" id="footerArea2">
+				
+                </div>
+                
+                <div class="span3" id="footerArea3">
+                </div>
+                
+                <div class="span3" id="footerArea4">
+
+                    <h3>Mitutoyo Česko s.r.o.</h3>  
+                                                               
+                    <ul id="contact-info">
+                    <li>                                    
+                        <i class="general foundicon-phone icon"></i>
+                        <span class="field">Tel.:</span>
+                        <br />
+                        +420 417 514 023                                                               
+                    </li>
+                    <li>
+                        <i class="general foundicon-mail icon"></i>
+                        <span class="field">Email:</span>
+                        <br />
+                        <a href="mailto:scales@mitutoyo.cz" title="Email">scales@mitutoyo.cz</a>
+                    </li>
+                    <li>
+                        <i class="general foundicon-home icon" style="margin-bottom:50px"></i>
+                        <span class="field">Adresa:</span>
+                        <br />
+                        Dubská 1626<br />
+                        415 01 Teplice<br />
+                        Česká republika
+                    </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <br /><br />
+            <div class="row-fluid">
+                <div class="span12">
+                    <p class="copyright">
+                        Copyright © 2017 Mitutoyo Česko s.r.o. Všechna práva vyhrazena.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+
+<script src="scripts/jquery.min.js" type="text/javascript"></script> 
+<script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="scripts/default.js" type="text/javascript"></script>
+
+
+</body>
+</html>
