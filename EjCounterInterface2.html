@@ -148,11 +148,11 @@
 
 					<img src="images/EjCounter_SerTerm.png" alt="">
 					
-					<p><i>POZNÁMKA: na snímku obrazovky v okně vlevo nahoře je vidět, že terminál poněkud promíchal odeslaná (zelená) a přijatá (modrá) data. Nicméně komunikace jako taková ve smyslu <b>požadavek - odpověď</b> proběhla správně. Každý uživatel asi zvolí "svůj"  sériový terminám podle toho, na co je zvyklý a co mu vyhovuje.</i></p>
+					<p><i>POZNÁMKA: na snímku obrazovky v okně vlevo nahoře je vidět, že terminál poněkud promíchal odeslaná (zelená) a přijatá (modrá) data. Nicméně komunikace jako taková ve smyslu <b>požadavek - odpověď</b> proběhla správně. Každý uživatel asi zvolí "svůj"  sériový terminál podle toho, na co je zvyklý a co mu vyhovuje.</i></p>
 					
 					<h3>Komunikační příkazy</h3>					
 
-					<p>Všechny příkazy pro komunikaci s countery jsou popsány v manuálu v kapitole USB communication format ve formátu data a odpoveď. Důležité je připomenout, že návratový řetězed (odpověď), obsahuje i tzv. error kódy, tedy informace o tom že se vše povedlo či o tom, proč se to nepovedlo. Celkem běžně se může stát, že pošleme špatný požadavek. V takovém případě se vrátí odpověď s chybovým kódem <b>4 = Undefined command</b>.
+					<p>Všechny příkazy pro komunikaci s countery jsou popsány v manuálu v kapitole USB communication format ve formátu data a odpověď. Důležité je připomenout, že návratový řetězec (odpověď), obsahuje i tzv. error kódy, tedy informace o tom že se vše povedlo či o tom, proč se to nepovedlo. Celkem běžně se může stát, že pošleme špatný požadavek. V takovém případě se vrátí odpověď s chybovým kódem <b>4 = Undefined command</b>.
 					</p>
 					<p><b>PŘÍKLAD:</b>
 					</p>
@@ -196,7 +196,7 @@
 					<h2>Reálná úloha</h2>
 					<p>Aktuálním úkolem tedy bude realizovat stejnou měřící úlohu, kterou jsme realizovali při <a href="EjCounterInterface1.html"><b>Použití EJ-counterů s připojením přes IO rozhraní</b></a>. Tentokrát ale budeme chtít, aby veškeré potřebné úkony a čtení a vyhodnocení dat byly realizovány na dálku z počítače pomocí datového rozhraní.
 					</p>
-					<p>Pro to, abychom mohli úspěšně měřit jsme potřebovali udělat níže popsané kroky. Ty ovšem nyní uděláme pomocí příslušných příkazů z připojeného počítače:
+					<p>Pro to, abychom mohli úspěšně měřit, jsme potřebovali udělat níže popsané kroky. Ty ovšem nyní uděláme pomocí příslušných příkazů z připojeného počítače:
 					</p>
 					<table>
 						<tbody>
@@ -230,7 +230,7 @@
 						<td>Pohled obsluhy (1)</td>
 						<td>0011</td>
 						<td>GCJ,0011</td>
-						<td>GCJ,0011,0,+0010900000,L1,00</td>
+						<td>GCJ,0011,0,+0011093600,L1,00</td>
 						</tr>
 						<tr>
 						<td>4</td>
@@ -238,23 +238,25 @@
 						<td>Pohled obsluhy (1)</td>
 						<td>0011</td>
 						<td>GCJ,0011</td>
-						<td>GCJ,0011,0,+0010900000,L1,00</td>
+						<td>GCJ,0011,0,+0010900100,L1,00</td>
 						</tr>
 						</tbody>
 					</table>
 					
 					<br />
-					<p><i><b>(1)</b> Při realizaci <a href="EjCounterInterface1.html">předchozí úlohy</a>: jsme stav vyhodnocovali jen pohledem. V zelenám komentářei o trigrování je pak uveden stisk tlačítka (šlapky) potvrzující, že díl je správně založen a výsledná hodnota resp stav na IO vývodech je platný.</i>
+					<p><i><b>(1)</b> Při realizaci <a href="EjCounterInterface1.html">předchozí úlohy</a> jsme stav měření vyhodnocovali jen pohledem "ve správný okamžik". V zelenám komentáři o trigrování je pak "správný okamžik" uveden jako stisk tlačítka (šlapky) potvrzující, že díl je správně založen a že výsledná hodnota resp. stav na IO vývodech je platný.<br />V naší aktuální úloze je okamžik trigrování jednoznačně dán okamžikem vyslání příkazu do komunikační jednotky, což se stane na základě stisknutí příslušného tlačítka na klávesnici počítače.</i>
 					</p>
 					
 					<h3>První program</h3>
+					<p>Protože celý systém komponent EJ-counteru dovoluje ovládat <b>všechna nastavení</b> pomocí datového rozhraní, je tak možné vytvářet velmi výkonné a sofistikované mařící systémy tak, že veškerá logika a prezentace výsledků je realizována programově v připojených počítačích a snímače s čítači budou tvořit jen technologické rozhraní a vlastní výkonnou část. Obrazně řečeno - <b>počítač bude mozkem a snímače spolu s čítači budou výkonnými orgány při realizaci měřících úloh</b>.
+					</p>
 					
 					<div class="alert alert-success">     
 						<p>Ukázky programu a programové příklady ke stažení jsou realizovány v jazyku <b>Python 3</b>. Důvodem k použití tohoto jazyka je zejména skutečnost, že kód je přenositelný na Linux, což může být pro mnoho aplikací velkou výhodou.
 						</p>
 						<p><b>DŮLEŽITÉ:</b><br />
-						<b>1) (!) změňte přiřazení COM portu na pátém řádku PORT_NUMBER = 'COM10' na port skutečně použitý na vašem počítači</b><br />
-						<b>2) uvedený kód je absolutně minimalistický.</b> Program nemá grafické uživatelské rozhraní (GUI), ovládá se tlačítky klávesnice <b>(P, R, Q)</b>, není provedeno rozdělení a formátování dat ani ošetření chyb. Je to proto, aby program s co nejmenším objemem kódu ukázal základní principy komunikace a nabídl nezbytný základ pro další práci.
+						<b>1) změňte přiřazení COM portu na pátém řádku PORT_NUMBER = 'COM10' na port skutečně použitý na vašem počítači</b><br />
+						<b>2) </b>uvedený <b>kód je absolutně minimalistický.</b> Program nemá grafické uživatelské rozhraní (GUI), ovládá se tlačítky klávesnice <b>(P, R, Q)</b>, není provedeno rozdělení a formátování dat ani ošetření chyb. Je to proto, aby program s co nejmenším objemem kódu ukázal základní principy komunikace a nabídl nezbytný základ pro další práci.
 						</p>
 					</div>	
 			
@@ -309,47 +311,96 @@ except:
 					</code>
 					</pre>
 
-					<h3>Použití</h3>
+					<h3>Realizace</h3>
 					
 					<p>Výsledek celého snažení v praxi je vidět na následujícím videu:
 					</p>
+					
+					<video controls>
+					  <source src=".\videos\EjCounterCommunication.mp4" type="video/mp4" class="img-polaroid">
+					</video>
+					<p><i>Mihotání LED prvků displeje se projevuje jen na videozáznamu, kde vzniká interferencí mezi obnovovací frekvencí displeje a snímkováním videa.
+					</i></p
+					
+					<h3>Popis jednotlivých fází</h3>
+					<p>Jednotlivé fáze jsou funkčně stejné jako v <a href="EjCounterInterface1.html">předchozím případě realizovaném s využitím IO rozhraní</a>. Tentokrát je ale veškerá interakce s čítačem realizována s využitím komunikace po datovém rozhraní. Získali jsme i reálné míry jednotlivých testovaných kusů a nebyl by tedy problém provést toleranční vyhodnocení v počítači a dát pokyn k navazující akci - např. příkaz pro robota k odebrání dílu.
+					</p>
+					
+					<h4>1) Připojení napájení</h4>
+					<h4>1b) Spuštění  programu</h4>
+					<p>Spuštění programu pro komunikaci se snímačem. Okamžitě po spuštění je provedeno uložení aktuální hodnoty preset do čítače (109,000 mm) stisknutím tlačítka P <i>(Preset)</i>. Snímač vrátil odpověď <b>SPR,0011,0,+0010900000,00</b>.
+					</p>
+					
+					<h4>2) Reference a PRESET</h4>
+					<p>Stisknutím klávesy P po vložení referenčního normálu (měrky) je odeslán příkaz k nastavení reference. Na displeji je vidět převzatá hodnota. Snímač vrátil odpověď o bezchybném provedení <b>PST,0011,0,00</b>.
+					</p>
+					
+					<h4>3) Měření</h4>
+					<p>Ve fázi měření je prováděno rutinní vkládání výrobků do měřícího systému. Po řádném založení je provedeno odečtení hodnoty stisknutím tlačítka R <i>(Read)</i>. Snímač vrací odpověď s aktuální hodnotou a s výsledkem tolerančního vyhodnocení, např. <b>GCJ,0011,0,+0011093600,L1,00</b> pro první díl.
+					</p>
+					<p>+0011093600 = 11,0936 mm<br />
+					L1 =  NOK OK- (L3 = OK, L5 = NOT OK+)
+					</p>
+
+					<h4>4) Ověření</h4>
+					<p>Po vložením referenčního dílu je proveden odečet hodnoty stisknutím tlačítka R. Snímač vrátil odpověď <b>GCJ,0011,0,+0010900100,L1,00</b>, která obsahuje hodnotu rozměru 109,001 mm. Rozdíl 1 µm je zcela zanedbatelný, ověření je možno pokládat za OK. Pokud by ověření nebylo v pořádku program musí vyvolat příslušnou akci (zastavení dalšího měření + výstraha).
+					</p>
+					
+					<h4>5) Ukončení programu</h4>
+					<p>Na závěr bylo provedeno formální ukončení programu tlačítkem Q <i>(Quit)</i>. Do čítače přitom nebyla odeslána žádná hodnota. Samotné ukončení komunikačního programu nemá na čítač žádný vliv.
+					</p>
+					
+					<h3>Spolupráce s IO a možnost jejich dalšího využití</h3>
+					<p>Za zvláštní zmínku stojí jedna věc. Z předchozí úlohy zůstaly v EJ-counteru <b>zapnuté 3-stupňové toleranční vyhodnocení a uložené toleranční meze. Díky tomu counter automaticky provedl toleranční vyhodnocení</b>. Výsledky odeslal v odpovědi na každý dotaz na měřenou hodnotu. Můžeme si všimnout, že v návratových řetězcích se vyskytuje <b>L1</b> pro NOT OK-, <b>L3</b> pro OK a <b>L5</b> pro NOT OK+. Zároveň je ale tato indikace patrná na LED ukazateli EJ-counteru a <b>odpovídající stavy se objevují i na logických výstupech na konektoru modulu</b>. To nám dává možnost řešit navázání do technologie jak pomocí připojeného PC, tak pomocí "drátů", které při patřičném oddělení a zesílení vedou do nějakých akčních členů. Tato variabilita může být leckdy celkem výhodná, protože z PC obvykle žádné zvláštní "dráty" nevedou a akční členy tedy nemusí být snadné k PC připojit.
+					</p>
+					
+					<h4>Toleranční vyhodnocení</h4>
+					<p>Při použití vyhodnocení tolerancí v EJ counteru lze samozřejmě toleranční meze i samotné tolerování nastavit pomocí komunikačního modulu obdobně jako jsme nastavili hodnotu <i>Preset<>/i. Zároveň s tím je ale možné tyto parametry nastavovat i přímo z panelu jednotky. To nabízí širokou škálu scénářů použití - lze například napsat program, který přebírá a zpracovává výsledky vyhodnocení Lx, přičemž hodnoty mezí lze v případě potřeby měnit tlačítky na jednotce EJ counteru, nebo pomocí nastavovacího programu <i>LG Quick Setup Tool</i>. Tak lze např. zjednodušit samotný výkonný program a snížit práci spojenou s programováním speciální aplikace.
+					</p>
+					
+					<h3>Výpis výstupů programu v CMD okně</h3>
+					<pre>
+					<code>
+Serial port was opened successfully.
+SPR,0011,0,+0010900000,00
+
+COMMANDS: - press P key for PRESET
+          - press R key for READ the counter value
+          - press Q key for QUIT
+PST,0011,0,00
+
+GCJ,0011,0,+0011093600,L1,00
+
+GCJ,0011,0,+0011098300,L3,00
+
+GCJ,0011,0,+0011102950,L5,00
+
+GCJ,0011,0,+0011100050,L5,00
+
+GCJ,0011,0,+0010900100,L1,00
+
+Program was terminated - Q-key was pressed by the user.
+					</code>
+					</pre>
+					
+					<br />
 					
 					<div class="alert alert-info">     
-						<p><b>Nechcete programovat, a přesto byte si to rádi zkusili?</b> V takovém případě si můžete stáhnout mírně upravený zkompilovaný kód a ten bez instalace spustit na svém počítači.
+						<p><b>Nechcete programovat, a přesto byte si to rádi zkusili?</b> V takovém případě si můžete stáhnout mírně upravený zkompilovaný kód a ten přímo bez instalace spustit na svém počítači.
 						</p>
 						<ul>
-							<li>Stáhněte komprimovaný balíček (pokud vám to bezpečnostní politika dovolí - obsahuje EXE) a rozbalte ho do nějakého adresáře.</li>
+							<li>Stáhněte <a href="./docs/EJ_counter_basic.zip">komprimovaný balíček</a> (pokud vám to bezpečnostní politika dovolí - obsahuje EXE) a rozbalte ho do nějakého adresáře.</li>
 							<li>Připojte jednotku EJ-counteru pomocí USB, zkontrolujte COM port ve Správci zařízení.</li>
-							<li>Upravte záznam o použitém COM portu v souboru config.ini, případně upravte hodnotu PRESET dle svých podmínek.</li>
-							<li>Spusťte program. Někdy je lepší program spustit z Příkazového řádku.</li>
+							<li>Upravte záznam o použitém COM portu v souboru <b>config.ini</b>, případně upravte hodnotu PRESET dle svých podmínek.</li>
+							<li>Spusťte program <b>main.exe</b>. Někdy je lepší program spustit z Příkazového řádku. Nezapomeňte se zde přepnout do adresáře, kde máte rozbalený program.</li>
+							<li>TIP: pokud program spouštíte z grafického prostředí a CMD okno vám jen problikne a zmizí, máte špatně nastaven COM port v <b>config.ini</b> a nebo komunikační jednotka counteru není připojena.</li>
 						</ul>
 					</div>
-					
-					<h4>Popis</h4>
-					
-					<p>Jednotlivé fáze jsou funkčně stejné jako v předchozím případě realizovaném s využitím IO rozhraní. Tentokrát ale byla veškerá interakce s čítačem realizována s využitím komunikace po datovém rozhraní. Získali jsme i reálné míry jednotlivých testovaných kusů a nebyl by tedy problém provést toleranční vyhodnocení v počítači a dát pokyn k navazující akci - např. příkaz pro robota k odebrání dílu.
-					</p>
-					
-					<p>Protože celý systém komponent EJ-counteru dovoluje ovládat <b>všechna nastavení</b> pomocí datového rozhraní, je tak možné vytvářet velmi výkonné a sofistikované mařící systémy tak, že veškerá logika a prezentace výsledků je realizována programově v připojených počítačích a snímače s čítači budou tvořit jen technologické rozhraní a vlastní výkonnou část. Obrazně řečeno - <b>počítač bude mozkem a snímače spolu s čítači budou výkonnými orgány při realizaci měřících úloh</b>.
-					</p>
-					
-					<h4>Spolupráce s IO a možnost jejich dalšího využití</h4>
-					
-					<p>Za zvláštní zmínku stojí jedna věc. Z předchozí úlohy zůstaly v EJ-counteru <b>uložené toleranční meze a tak counter automaticky provedl toleranční vyhodnocení</b>. Výsledky odeslal v odpovědi na každý dotaz na měřenou hodnotu. Můžeme si všimnout, že v návratových řetězcích se vyskytuje <b>L1</b> pro NOT OK-, <b>L3</b> pro OK a <b>L5</b> pro NOT OK+. Zároveň je ale tato indikace patrná na LED ukazateli EJ-counteru a <b>odpovídající stavy se objevují i na logických výstupech na konektoru modulu</b>. To nám dává možnost řešit navázání do technologie jak pomocí připojeného PC, tak pomocí "drátů", které při patřičném oddělení a zesílení vedou do nějakých akčních členů. Tato variabilita může být leckdy celkem výhodná, protože z PC obvykle žádné zvláštní "dráty" nevedou a akční členy tedy nemusí být snadné k PC připojit.
-					</p>
-					
-					<p>Co se uložených tolerancí týče, je jasné, že je lze z připojeného počítače snadno změnit stajně tak, jak jsme měnili uloženou hodnotu PRESET.
-					</p>
-					
-					<h3>Profesionální řešení</h3>
-					
-					<p>Výsledek celého snažení v praxi je vidět na následujícím videu:
-					</p>
 					
 					<h2>Odkazy a další informace</h2>
 					<p><a href="EEgEhCounterApp.html">Aplikace s lineárními snímači a EG (EH) countery</a></p>
 					<p><a href="EjCounterApp.html">Nová řada lineárních snímačů a EJ counterů</a></p>
-					<p><a href="EjCounterInterface1.html">Použití EJ-counterů s připojením přes IO rozhraní</a></p>
+					<p><a href="EjCounterInterface1.html">Připojení a komunikace EJ-counterů s prostředím, díl 1: Použití EJ-counterů s připojením přes IO rozhraní</a></p>
 				
                 </div>
             <!--End Main Content Area-->
