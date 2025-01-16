@@ -113,21 +113,59 @@
 					<h1>NA ČLÁNKU SE PRŮBĚŽNĚ PRACUJE</h1>
 					<p />
 					<h1>Příklad realizace jednoduché aplikace s LSM u zákazníka</h1>
-					<p>Ve zde uvedeném případu je LSM použit pro <b>třídění válcových dílů do skupin</b> podle průměrů, toleranční pole skupiny je dle dílu kolem 2 µm. Zakládání dílů je ruční. Podstatné je, aby systém přímo zobrazil danou třídící skupinu dle tabulky jednotlivých úrovní dodané jako cv soubor.
+					<p>Ve zde uvedeném případu je LSM použit pro <b>třídění válcových dílů do skupin</b> podle průměrů, toleranční pole skupiny je dle dílu kolem 2 µm. Zakládání dílů je ruční. Podstatné je, aby systém přímo zobrazil danou třídící skupinu dle tabulky jednotlivých úrovní dodané jako csv soubor.
 					</p>
-					<p>Základním problémem k řešení je, že samotná setstava LSM <b>neobshuje žádný displej nebo zobrazovací jednotku</b>. Protože samotné získávání údajů z přístroje je celkem jednoduché, viz <a href="LSMapp1.html">předchozí článek</a>, bylo rozhodnuto, že jako zobrazovací jednotka se použije nějaký kompaktní počítač, který bude zároveň zajišťovat komunikaci s jednotkou. Jako vhodný a cenově přiměřený se jevil kopaktní All-in-One <a href="https://www.asus.com/cz/displays-desktops/all-in-one-pcs/expertcenter-aio/expertcenter-e1-aio-e1600/">ASUS Expert Center E1</a> s 15,6' dotykovým displejem, který tak zároveň umožní základní ovládání bez klávesnice a myši. Mitutoyo mj. tento počtač se softrare M2 volitelně používá jako <i>interaktivní systém zpracování grafiky</i> u profilprojektorů řady PJ a PV.
+					<p>Základním problémem k řešení je, že samotná sestava LSM <b>neobsahuje žádný displej nebo zobrazovací jednotku</b>. Protože samotné získávání údajů z přístroje je celkem jednoduché, viz <a href="LSMapp1.html">předchozí článek</a>, bylo rozhodnuto, že jako zobrazovací jednotka se použije nějaký kompaktní počítač, který bude zároveň zajišťovat komunikaci s jednotkou. Jako vhodný a cenově přiměřený se jevil kompaktní All-in-One <a href="https://www.asus.com/cz/displays-desktops/all-in-one-pcs/expertcenter-aio/expertcenter-e1-aio-e1600/">ASUS Expert Center E1</a> s 15,6' dotykovým displejem, který tak zároveň umožní základní ovládání bez klávesnice a myši. Mitutoyo mj. tento počítač se software M2 volitelně používá jako <i>interaktivní systém zpracování grafiky</i> u profilprojektorů řady PJ a PV.
 					</p>
-					<p>Hotová sestava veškerého hardware včetně funkkčního software může vapadat třeba takto. Díky malým  rozměrům vyhodnocovací jednotky jsme se snažili vytvořit co nejkompatnější celek usnadňující manipulaci, skladování atd. Na snímku nejsou vidět externí napájecí adaptéry pro počítač (zásuvkový typ) a LSM (externí uzavřený typ, obdobný jako např napaječe notebooků).
+					<p>Hotová sestava veškerého hardware včetně funkčního software může vypadat třeba takto. Díky malým  rozměrům vyhodnocovací jednotky jsme se snažili vytvořit co nejkompaktnější celek usnadňující manipulaci, skladování atd. Na snímku nejsou vidět externí napájecí adaptéry pro počítač (zásuvkový typ) a LSM (externí uzavřený typ, obdobný jako např. napaječe notebooků).
 					</p>
 								
 					<img src="images/LSM_DIN.jpg" alt=""> 
 					<p />
-					<p>Možnost montáže vyhodnocovací jednotky LSM na DIN lištu se jeví jako velmi užitečná i v případech, kdy se nejedná o tapickou montáž do rozvaděče. Toho jsme využili i my, když jsme DIL lištu připevnili na existující závitové otvory počítače pro <i>VESA držák</i> a na ni nacvakli danou jednotku. Nabízí se přitom dvě možnosti upevnění: <i> čelem dopředu</i> a <i>dozadu</i>.
+					<p>Možnost montáže vyhodnocovací jednotky LSM na DIN lištu se jeví jako velmi užitečná i v případech, kdy se nejedná o typickou montáž do rozvaděče. Toho jsme využili i my, když jsme DIL lištu připevnili na existující závitové otvory počítače pro <i>VESA držák</i> a na ni nacvakli danou jednotku. Nabízí se přitom dvě možnosti upevnění: <i> čelem dopředu</i> a <i>vzadu</i>.
+					</p>
+					<img src="images/LSM_DIN2.jpg" alt=""> 
+					<p />
+					<p><i>Možnosti upevnění vyhodnocovací jednotky na DIN lištu na počítači. Poloha <b>čelem dopředu</b> umožňuje vidět stavové LED jednotky, které mohou signalizovat i chybový stav. Poloha <b>vzadu</b> je prostorově úspornější, zároveň umožnuje skrýt kabeláž jednotky.</i>
+					</p>
+					<p><i><b>POZNÁMKA:</b> na DIN liště chybí mechanické dorazy příp. další příslušenství. Uvedené obrázky zde slouží pouze pro inspiraci a zobrazení možného uspořádání</i>.
 					</p>
 					
 					<h3>Software</h3>
+					
+					<p>Software pro aplikaci z úvodního obrázku vychází z principů popsaných v <a href="LSMapp1.html">předchozím článku</a> a je napsaný v <b>Pythonu</b>. Zdrojový kód i kompletní aplikace jednoduše spustitelná na PC (bez instalace) je přiložena ke stažení.
+					</p>
+					<p>Důvody, proč byl pro aplikaci vybrán <b>Python</b>, jsou celkem obšírné a nemá cenu je zde detailně rozebírat. Preferované výhody jsou zejména tyto:
+					</p>
+					<ul>
+						<li>dostupnost <a href="https://www.python.org/">Pythonu</a> a jeho široká podpora</li>
+						<li>názornost kódu a snadné ladění programu v prostředí interpretovaného jazyka</li>
+						<li>kompatibilita s Linux systémy a z toho vyplývající možnost chodu na malých SBC</li>
+					</ul>
+					<h4>Informace pro použití</h4>
+					<p>Uvedený software je <b>prototyp</b>. Jedná se nejjednodušší funkční aplikaci postavenou na <a href="LSMapp1.html">dříve dokumentovaných základech</a>. Je to tak proto, aby umožnila studium a další modifikaci kódu. Z uvedeného důvodu je tak program publikován jako <b></>Open source</i></b>.
+					</p>
+					<p>Program není od profesionálního programátora a jistě by šel napsat lépe. To na druhou stranu ukazuje, že zkusit to může opravdku každý!
+					</p>
+					<p>Pokud budete instalovat Python na svém počítači pro ladění programu a provádění úprav ve <b>zdrojovém kódu</b>, pak jedinou externí knihovnou je knihovna <a href="https://pypi.org/project/pyserial/">PySerial</a>, kterou je nutno k základnímu Pythonu doinstalovat příkazem <i>pip install pyserial</i>. 
+					</p>
+					<p>Pokud budete pouze spouštět <b>přeložený program</b>, stačí ho bez jakékoliv instalace pouze nakopírovat do libovolného lokálního adresáře a jen spustit soubor <i>main.exe</i>. Z tohoto souboru je též možné vytvořit zástupce a uložit ho třeba na plochu pro snazší spouštění programu v budoucnu. <b>Aby však program správně fungoval, je třeba mít správné nastavení v souboru <i>config.ini</i>.</b>
+					</p>
+					<h4>Soubor config.ini</h4>
+					<p>Textový soubor <i>config.ini</i> obsahuje některá důležitá nastavení programu. V souboru jsou ke většině záznamů komentáře, které vysvětlují účel jednotlivých parametrů.
+					</p>
+					<p><b>Tři důležité parametry:</b>
+					</p>
+					<ul>
+						<li><b><i>com_port = COM6</i></b>, který je třeba nastavit podle toho, jaké je systémové přiřazení virtuálního COM portu laserového mikrometru ve Správce zařízení <i>(Device manager)</i></li>
+						<li><b><i>sorting_level_file = SortingLevel.csv</i></b>, csv soubor s třídícími mezemi</li>
+						<li><i>poling_frequency = 350</i>, určení intervalu dotazování [ms]. DŮLEŽITÉ: nezkracujte tento interval pod pracovní cyklus LSM, jinak dojde k chybovým responsům (dotaz v okamžiku nedokončeného předchozího cyklu) a údaj na dispjei bude blikat</li>
+					</ul>
+					
 					<h2>Odkazy a další informace</h2>
-					<p><a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
+					<p>Download (ZIP): <a href="">Zdrojový kód programu v Pythonu</a></p>
+					<p>Download (ZIP): <a href="">Přeložená aplikace ke spuštění</a></p>
+					<p>Článek: <a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
 
 				
                 </div>
