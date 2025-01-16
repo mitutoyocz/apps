@@ -1,0 +1,215 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mitutoyo Česko</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Html5TemplatesDreamweaver.com">
+
+    <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Icons -->
+    <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
+    <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <!--[if lt IE 8]>
+        <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
+
+    <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+		.channelValue {font-size:55px; color:#aaaaaa; text-align: right; margin: 0px 100px 0px 55px; float:left;}
+		
+		.prgNote {color:#009000;}
+		
+		
+		table.withoutBorder {
+		  border: 1px solid #FFFFFF;
+		}
+		table.withoutBorder td, table.withoutBorder th {
+		  border: 1px solid #FFFFFF;
+		  padding: 1px 20px 1px 20px;
+		}
+		
+		table.withoutBorderPadding {
+		  border: 1px solid #FFFFFF;
+		}
+
+		video {
+			width: 100%    !important;
+			height: auto   !important;
+		}
+	</style>
+	
+</head>
+<body id="pageBody">
+
+<div id="divBoxed" class="container">
+
+    <div class="transparent-bg" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: -1;zoom: 1;"></div>
+
+    <div class="divPanel notop nobottom">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div id="divLogo" class="pull-left">
+                        <a href="index.html" id="divSiteTitle"><img src="images/mit_logo.png" alt="Mitutoyo" title="Mitutoyo" /></a>
+                        <br />
+                        <a href="index.html" id="divTagLine">Stránky aplikační podpory</a>	
+                    </div>
+
+                    <div id="divMenuRight" class="pull-right">
+                    <div class="navbar">
+                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                        </button>
+
+						
+						
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div id="contentInnerSeparator"></div>
+                </div>
+            </div>
+    </div>
+
+    <div class="contentArea">
+
+        <div class="divPanel notop page-content">
+
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> &nbsp;/&nbsp; <span>Simple LSM implementation by customer</span>
+            </div>
+
+            <div class="row-fluid">
+            <!--Edit Main Content Area here-->
+                <div class="span12" id="divMain">
+					
+					<h1>NA ČLÁNKU SE PRŮBĚŽNĚ PRACUJE</h1>
+					<p />
+					<h1>Příklad realizace jednoduché aplikace s LSM u zákazníka</h1>
+					<p>Ve zde uvedeném případu je LSM použit pro <b>třídění válcových dílů do skupin</b> podle průměrů, toleranční pole skupiny je dle dílu kolem 2 µm. Zakládání dílů je ruční. Podstatné je, aby systém přímo zobrazil danou třídící skupinu dle tabulky jednotlivých úrovní dodané jako cv soubor.
+					</p>
+					<p>Základním problémem k řešení je, že samotná setstava LSM <b>neobshuje žádný displej nebo zobrazovací jednotku</b>. Protože samotné získávání údajů z přístroje je celkem jednoduché, viz <a href="LSMapp1.html">předchozí článek</a>, bylo rozhodnuto, že jako zobrazovací jednotka se použije nějaký kompaktní počítač, který bude zároveň zajišťovat komunikaci s jednotkou. Jako vhodný a cenově přiměřený se jevil kopaktní All-in-One <a href="https://www.asus.com/cz/displays-desktops/all-in-one-pcs/expertcenter-aio/expertcenter-e1-aio-e1600/">ASUS Expert Center E1</a> s 15,6' dotykovým displejem, který tak zároveň umožní základní ovládání bez klávesnice a myši. Mitutoyo mj. tento počtač se softrare M2 volitelně používá jako <i>interaktivní systém zpracování grafiky</i> u profilprojektorů řady PJ a PV.
+					</p>
+					<p>Hotová sestava veškerého hardware včetně funkkčního software může vapadat třeba takto. Díky malým  rozměrům vyhodnocovací jednotky jsme se snažili vytvořit co nejkompatnější celek usnadňující manipulaci, skladování atd. Na snímku nejsou vidět externí napájecí adaptéry pro počítač (zásuvkový typ) a LSM (externí uzavřený typ, obdobný jako např napaječe notebooků).
+					</p>
+								
+					<img src="images/LSM_DIN.jpg" alt=""> 
+					<p />
+					<p>Možnost montáže vyhodnocovací jednotky LSM na DIN lištu se jeví jako velmi užitečná i v případech, kdy se nejedná o tapickou montáž do rozvaděče. Toho jsme využili i my, když jsme DIL lištu připevnili na existující závitové otvory počítače pro <i>VESA držák</i> a na ni nacvakli danou jednotku. Nabízí se přitom dvě možnosti upevnění: <i> čelem dopředu</i> a <i>dozadu</i>.
+					</p>
+					
+					<h3>Software</h3>
+					<h2>Odkazy a další informace</h2>
+					<p><a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
+
+				
+                </div>
+            <!--End Main Content Area-->
+            </div>
+
+            <div id="footerInnerSeparator"></div>
+        </div>
+    </div>
+
+    <div id="footerOuterSeparator"></div>
+
+<div id="divFooter" class="footerArea">
+
+        <div class="divPanel">
+
+            <div class="row-fluid">
+                <div class="span3" id="footerArea1">
+                
+                    <h3>O těchto stránkách</h3>
+
+                    <p>Obsah těchto stránek je určen pro poskytování aplikační podpory. Jde o prezentaci podrobnějších informací k některým produktům o demonstraci příkladů úspěšných řešení.
+					<br />  
+					Stránky poskytují doplňující informace k hlavním stránkám společnosti 
+					<a href="http://www.mitutoyo.cz" title="Email">www.mitutoyo.cz</a>.</p>                    
+                </div>
+                
+                <div class="span3" id="footerArea2">
+				
+                </div>
+                
+                <div class="span3" id="footerArea3">
+                </div>
+                
+                <div class="span3" id="footerArea4">
+
+                    <h3>Mitutoyo Česko s.r.o.</h3>  
+                                                               
+                    <ul id="contact-info">
+                    <li>                                    
+                        <i class="general foundicon-phone icon"></i>
+                        <span class="field">Tel.:</span>
+                        <br />
+                        +420 417 514 023                                                               
+                    </li>
+                    <li>
+                        <i class="general foundicon-mail icon"></i>
+                        <span class="field">Email:</span>
+                        <br />
+                        <a href="mailto:scales@mitutoyo.cz" title="Email">scales@mitutoyo.cz</a>
+                    </li>
+                    <li>
+                        <i class="general foundicon-home icon" style="margin-bottom:50px"></i>
+                        <span class="field">Adresa:</span>
+                        <br />
+                        Dubská 1626<br />
+                        415 01 Teplice<br />
+                        Česká republika
+                    </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <br /><br />
+            <div class="row-fluid">
+                <div class="span12">
+                    <p class="copyright">
+                        Copyright © 2017 Mitutoyo Česko s.r.o. Všechna práva vyhrazena.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+
+<script src="scripts/jquery.min.js" type="text/javascript"></script> 
+<script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="scripts/default.js" type="text/javascript"></script>
+
+
+</body>
+</html>
