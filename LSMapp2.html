@@ -110,12 +110,10 @@
             <!--Edit Main Content Area here-->
                 <div class="span12" id="divMain">
 					
-					<h1>NA ČLÁNKU SE PRŮBĚŽNĚ PRACUJE</h1>
-					<p />
 					<h1>Příklad realizace jednoduché aplikace s LSM u zákazníka</h1>
 					<p>Ve zde uvedeném případu je LSM použit pro <b>třídění válcových dílů do skupin</b> podle průměrů, toleranční pole skupiny je dle dílu kolem 2 µm. Zakládání dílů je ruční. Podstatné je, aby systém přímo zobrazil danou třídící skupinu dle tabulky jednotlivých úrovní dodané jako csv soubor.
 					</p>
-					<p>Základním problémem k řešení je, že samotná sestava LSM <b>neobsahuje žádný displej nebo zobrazovací jednotku</b>. Protože samotné získávání údajů z přístroje je celkem jednoduché, viz <a href="LSMapp1.html">předchozí článek</a>, bylo rozhodnuto, že jako zobrazovací jednotka se použije nějaký kompaktní počítač, který bude zároveň zajišťovat komunikaci s jednotkou. Jako vhodný a cenově přiměřený se jevil kompaktní All-in-One <a href="https://www.asus.com/cz/displays-desktops/all-in-one-pcs/expertcenter-aio/expertcenter-e1-aio-e1600/">ASUS Expert Center E1</a> s 15,6' dotykovým displejem, který tak zároveň umožní základní ovládání bez klávesnice a myši. Mitutoyo mj. tento počítač se software M2 volitelně používá jako <i>interaktivní systém zpracování grafiky</i> u profilprojektorů řady PJ a PV.
+					<p>Základním problémem k řešení je, že samotná sestava LSM <b>neobsahuje žádný displej nebo zobrazovací jednotku</b>. Protože samotné získávání údajů z přístroje je celkem jednoduché, viz <a href="LSMapp1.html">předchozí článek</a>, bylo rozhodnuto, že jako zobrazovací jednotka bude použit nějaký kompaktní počítač, který bude zároveň zajišťovat komunikaci s jednotkou. Jako vhodný a cenově přiměřený se jevil All-in-One <a href="https://www.asus.com/cz/displays-desktops/all-in-one-pcs/expertcenter-aio/expertcenter-e1-aio-e1600/">ASUS Expert Center E1</a> s 15,6' dotykovým displejem, který tak zároveň umožní základní ovládání bez klávesnice a myši. <br />Je škoda, že kvůli jinému řešení USB komunikace LSM jednotky není možné v tomto případě použít počítač s <i>Linuxem</i>, jako jsme to udělali v případě <a href="EjCounterInterface3.html#anchelectric">prototypu s lineárním snímačem a EJ counterem</a>.
 					</p>
 					<p>Hotová sestava veškerého hardware včetně funkčního software může vypadat třeba takto. Díky malým  rozměrům vyhodnocovací jednotky jsme se snažili vytvořit co nejkompaktnější celek usnadňující manipulaci, skladování atd. Na snímku nejsou vidět externí napájecí adaptéry pro počítač (zásuvkový typ) a LSM (externí uzavřený typ, obdobný jako např. napaječe notebooků).
 					</p>
@@ -145,11 +143,13 @@
 					<h4>Informace pro použití</h4>
 					<p>Uvedený software je <b>prototyp</b>. Jedná se nejjednodušší funkční aplikaci postavenou na <a href="LSMapp1.html">dříve dokumentovaných základech</a>. Je to tak proto, aby umožnila studium a další modifikaci kódu. Z uvedeného důvodu je tak program publikován jako <b></>Open source</i></b>.
 					</p>
-					<p>Program není od profesionálního programátora a jistě by šel napsat lépe. To na druhou stranu ukazuje, že zkusit to může opravdku každý!
+					<p>Program není od profesionálního programátora a jistě by šel napsat lépe. Na druhou stranu to ale ukazuje, že zkusit to může opravdu každý!
 					</p>
-					<p>Pokud budete instalovat Python na svém počítači pro ladění programu a provádění úprav ve <b>zdrojovém kódu</b>, pak jedinou externí knihovnou je knihovna <a href="https://pypi.org/project/pyserial/">PySerial</a>, kterou je nutno k základnímu Pythonu doinstalovat příkazem <i>pip install pyserial</i>. 
+					<p>Pokud budete instalovat Python na svém počítači pro ladění programu a provádění úprav ve <b>zdrojovém kódu</b>, pak jedinou externí knihovnou je knihovna <a href="https://pypi.org/project/pyserial/">PySerial</a>, kterou je nutno k základnímu Pythonu doinstalovat příkazem <i>pip install pyserial</i>. <br />Funkce spojené s obsluhou LSM jsou z důvodu znovupoužitelnosti v jiných programech uloženy v samostatném souboru <i>lsm.py</i>. Do hlavního modulu <i>main.py</i> je tedy je třeba přilinkovat příkazem <i>from lsm import *</i>.
 					</p>
-					<p>Pokud budete pouze spouštět <b>přeložený program</b>, stačí ho bez jakékoliv instalace pouze nakopírovat do libovolného lokálního adresáře a jen spustit soubor <i>main.exe</i>. Z tohoto souboru je též možné vytvořit zástupce a uložit ho třeba na plochu pro snazší spouštění programu v budoucnu. <b>Aby však program správně fungoval, je třeba mít správné nastavení v souboru <i>config.ini</i>.</b>
+					<p>Pokud budete pouze spouštět <b>přeložený program</b>, stačí ho bez jakékoliv instalace pouze nakopírovat do libovolného lokálního adresáře a jen spustit soubor <i>main.exe</i>. Z tohoto souboru je též možné vytvořit zástupce a uložit ho třeba na plochu pro snazší spouštění programu v budoucnu.
+					</p>
+					<p><span class="label label-important">Aby program správně fungoval, je třeba mít správné nastavení v souboru <i>config.ini</i>.</span>
 					</p>
 					<h4>Soubor config.ini</h4>
 					<p>Textový soubor <i>config.ini</i> obsahuje některá důležitá nastavení programu. V souboru jsou ke většině záznamů komentáře, které vysvětlují účel jednotlivých parametrů.
@@ -159,14 +159,13 @@
 					<ul>
 						<li><b><i>com_port = COM6</i></b>, který je třeba nastavit podle toho, jaké je systémové přiřazení virtuálního COM portu laserového mikrometru ve Správce zařízení <i>(Device manager)</i></li>
 						<li><b><i>sorting_level_file = SortingLevel.csv</i></b>, csv soubor s třídícími mezemi</li>
-						<li><i>poling_frequency = 350</i>, určení intervalu dotazování [ms]. DŮLEŽITÉ: nezkracujte tento interval pod pracovní cyklus LSM, jinak dojde k chybovým responsům (dotaz v okamžiku nedokončeného předchozího cyklu) a údaj na dispjei bude blikat</li>
+						<li><i>poling_frequency = 350</i>, určení intervalu dotazování [ms]. DŮLEŽITÉ: nezkracujte tento interval pod pracovní cyklus LSM, jinak <a href="LSMapp1.html#anchfrequency">dojde k chybovým responsům</a> (dotaz v okamžiku nedokončeného předchozího cyklu) a údaj na displeji bude blikat</li>
 					</ul>
 					
 					<h2>Odkazy a další informace</h2>
+					<p>Související článek: <a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
 					<p>Download (ZIP): <a href="">Zdrojový kód programu v Pythonu</a></p>
 					<p>Download (ZIP): <a href="">Přeložená aplikace ke spuštění</a></p>
-					<p>Článek: <a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
-
 				
                 </div>
             <!--End Main Content Area-->
@@ -209,7 +208,7 @@
                         <i class="general foundicon-phone icon"></i>
                         <span class="field">Tel.:</span>
                         <br />
-                        +420 417 514 023                                                               
+                        +420 702 166 237                                                           
                     </li>
                     <li>
                         <i class="general foundicon-mail icon"></i>

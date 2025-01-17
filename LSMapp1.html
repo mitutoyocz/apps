@@ -140,7 +140,7 @@
 					<p>Existuje ještě jeden významný rozdíl mezi novu a starou jednotkou, a to, že nová jednotka <b>nemá žádný displej a žádné ovládací prvky</b>. Má jen dvě signalizační LED pro indikaci napájení 24 V a chybového stavu (včetně stavu "žádný díl"). Počítá se s tím, že toto "průmyslové zařízení" bude zabudováno například někde v rozvaděči a zobrazení a ovládání bude realizováno vzdáleně. Základním rozhraním každé jednotky je USB, které je v režimu <i>CDC device</i>, tady díky driveru e na počítači jeví jako virtuálni COM port (VCP), přes který lze s jednotkou komunikovat jako se sériovým rozhraním s použitím definovaných ASCII příkazů.
 					</p>
 					
-					<p>Důležité je také to, že <b>celé zařízení svým provedením a funkčností zapadá do jednotného konceptu s dříve uvedenou řadou <a href=EjCounterApp.html>nových lineárních snímačů a jejich jednotek</a></b>.
+					<p>Důležité je také to, že <b>celé zařízení svým provedením a funkčností zapadá do jednotného konceptu s dříve uvedenou řadou <a href="EjCounterApp.html">nových lineárních snímačů a jejich jednotek</a></b>.
 					
 					</p>
 					<img src="images/LSM_comparison.jpg" alt="">  <img src="images/LSM_ethernetIP.png" alt="" style="margin:0px 0px 0px 60px">
@@ -158,7 +158,7 @@
 					</p>
 			
 					<h2>Komunikace s počítačem</h2>
-					<p>Použití virtuálího sériového portu (VCP) na reálném USB výstupu je totožné s rešení použitým u komunikačních jednotek EJ counterů a je dostatečně <a href=EjCounterInterface2.html>podrobně popsáno zde</a>.
+					<p>Použití virtuálího sériového portu (VCP) na reálném USB výstupu je totožné s rešení použitým u komunikačních jednotek EJ counterů a je dostatečně <a href="EjCounterInterface2.html">podrobně popsáno zde</a>.
 					</p>
 					<h3>Komunikační příkazy</h3>
 					<p>Všechny <a href="./docs/EJ_counter_USB_commands.pdf">příkazy pro komunikaci</a> jsou popsány v manuálu v kapitole USB communication format ve formátu data a odpověď..
@@ -197,7 +197,7 @@
 						</tr>
 					</table>
 					<p> </p>
-					<p><b>DŮLEŽITÁ POZNÁMKA:</b>
+					<p><span class="label label-warning">POZNÁMKA:</span>
 					<br />
 					Na rozdíl od komunikační jednotky EJ-counterů je u LSM třeba provést v úvodu komunikace s jednotkou její <b>určité počáteční nastavení</b>. To je důležité mít na paměti, pokud budete předchozí příklad zkoušet ze sériového terminálu nebo ze svého programu. Více o počátečním nastavení v následujícím textu.
 					</p>
@@ -229,7 +229,9 @@
 					<h4>▪ Měření</h4>
 					<p>Hlavní úloha, provádí se <b>opakovaně</b> v nepřetržitém cyklu.
 					</p>
-					<p><b>DŮLEŽITÉ:</b> frekvence opakování by neměla být větší než jeden pracovní cyklus LSM, ve kterém se provádí více měření, které se průměrují do konečného výsledku odeslaného na rozhraní. Pokud se např. průměruje 1024 hodnot, tak to při pracovní fekvenci 3200 scan/sec znamená, že vzorkovací perioda by měla být cca 350 ms nebo větší. Přijde li požadavek na měření v okamžiku, kdy předchozí měření není dokončeno, jednotka vrátí <b>chybová odpověď</b>. Počet průměrovaných skenů v jednom měření je nastavitelný.
+					<p><span id="anchfrequency", class="label label-warning">DŮLEŽITÉ</span>
+					<br />
+					Frekvence opakování by neměla být větší než jeden pracovní cyklus LSM, ve kterém se provádí více měření, které se průměrují do konečného výsledku odeslaného na rozhraní. Pokud se např. průměruje 1024 hodnot, tak to při pracovní fekvenci 3200 scan/sec znamená, že vzorkovací perioda by měla být cca 350 ms nebo větší. Přijde li požadavek na měření v okamžiku, kdy předchozí měření není dokončeno, jednotka vrátí <b>chybová odpověď</b>. Počet průměrovaných skenů v jednom měření je nastavitelný.
 					</p>
 					<hr />
 					<table class="withoutBorder">
@@ -263,9 +265,9 @@
 						<th>Odpověď</td>
 						</tr>
 						<tr>
-						<td>Get status</td>
+						<td>Get status *</td>
 						<td>GSTS,1000,A{CR}{LF}</td>
-						<td>0STS,1000,A,P00,7.98070,1025,0,1024{CR}{LF}<b</td>
+						<td>0STS,1000,A,P00,7.98070,1025,0,1024{CR}{LF} *<b</td>
 						</tr>
 						<tr>
 						<td>Get calibration H</td>
@@ -279,13 +281,16 @@
 					</table>
 					<hr />
 					<p />
-					<p>Vrací se následující seznam položek oddělených čárkou:<br />
+					<p>*) Vrací se následující seznam položek oddělených čárkou:<br />
 					■command response (0STS), ■device number (1000), ■"A", ▪ program number, ■value [mm], ■status (1025 = calibrated + measuring), ■error status (0 = no error), ■samples count in one measuremnnt.
 					</p>
 					
 					<h2>Odkazy a další informace</h2>
-					<p><a href="LSMapp2.html">Příklad realizace jednoduché aplikace s LSM u zákazníka</a></p>
-
+					<p>Navazující článek: <a href="LSMapp2.html">Příklad realizace jednoduché aplikace s LSM u zákazníka</a></p>
+					<p>Popis IO konektoru: <a href="docs/LSM_unit_pinout.pdf">LSM unit pinout</a></p>
+					<p>Výtah z manuálu, popis komunikačních příkazů: <a href="docs/LSM_USB_DescriptionOfOperation.pdf">USB description of operation</a></p>
+					<p>Prospekt: <a href="docs/PRCZ 1589 - Laser Scan Micrometer - LSM-02-A30-ACU-A (NPI)_WEB.pdf">Vysoce přesný bezkontaktní měřicí systém, laserový skenovací mikrometr</a></p>
+				
 				
                 </div>
             <!--End Main Content Area-->
@@ -328,7 +333,7 @@
                         <i class="general foundicon-phone icon"></i>
                         <span class="field">Tel.:</span>
                         <br />
-                        +420 417 514 023                                                               
+                        +420 702 166 237                                                              
                     </li>
                     <li>
                         <i class="general foundicon-mail icon"></i>

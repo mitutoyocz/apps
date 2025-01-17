@@ -112,47 +112,37 @@
 
 					<h1>Připojení a komunikace EJ-counterů s prostředím, díl 3 </h1>
 					
-					<h2>Komplexní projekt</h2>
+					<h2>Demonstrační projekt</h2>
 					
-					<p>V <a href="EjCounterInterface2.html"><b>předchozím článku této série</b></a> jsme si prakticky ukázali princip komunikace počítače s blokem EJ counterů. Nicméně - pomyslná třešnička na dortu stále chybí: jak to všechno využít v konkrétní aplikaci. A to si ukážeme právě teď.
+					<p>V <a href="EjCounterInterface2.html"><b>předchozím článku této série</b></a> jsme si prakticky ukázali princip komunikace počítače s blokem EJ counterů. Nicméně - pomyslná třešnička na dortu stále chybí: jak to všechno využít v konkrétní aplikaci? Právě z toho důvodu vznikl následující demonstrační prototyp simulující příklad použití lineárního snímače při průběžné kontrole dílů na výrobní lince.
 					</p>
 					
-					<h2>Návrh</h2>
-					
-					<p>V počáteční fázi návrhu bylo třeba rozhodnout několik zásadních věcí:
-					<ol type="1">
-					  <li>Čím systém řídit?</li>
-					  <li>Jak zajistit aktivní mechanický pohyb?</li>
-					  <li>Jaké další benefity by celá aplikace mohla poskytnout?</li>
-					</ol>
+					<h2>Řešení</h2>
+					<p>Protože jsme chtěli kompaktní, levný a snadno realizovatelný projekt, vyšli jsme z následujícího:
 					</p>
-					
-					<h3>Koncepční řešení</h3>
-					<p>Postupem času vykrystalizovaly následující odpovědi>
-					</p>
-					
-					<p><b>ad 1)</b> Na malou aplikaci jsme jednoznačně chtěli malý a levný řídicí systém. Protože i předchozí ukázka komunikace mezi aplikací a čítači byla napsána v <b>Pythonu</b>, musí jít o systém, který nasazení Pythonu umožňuje. A tak bylo rozhodnuto o použití všeobecně rozšířeného a dostupného <b>jednodeskového počítače RaspberryPi</b> doplněného o displej. To umožní nasadit celý řídící počítač přímo na DIN lištu k sestavě EJ counterů s komunikačním modulem. 3,5 palcový displej pak k tomu všemu <i>padne jako ulitý</i>.
-					</p>
-					
-					<p><b>ad 2</b>) Po rozhodnutí o (1) není ohledně připojení malých motorů a jiných malých akčních členů žádná obava. Nicméně, co se samotným LG snímačem? Bude potřeba realizovat zvedání a standardní zvedací jednotky jsou u Mitutoyo výhradně vzduchové. V řadě případů ale u malých aplikací stlačený vzduch není dostupný a navíc i v efektorech robotů vidíme <b>masivní odklon od ovládání stlačeným vzduchem směrem k elektrickým pohonům</b>. Proto padlo rozhodnutí realizovat zvedání snímače pomocí modelářského serva. Vybrán byl typ <b>Hitec HS-85MG</b> s kovovými převody, který má díky vyššímu zpřevodování vyšší dosažitelnou sílu (pro nás menší zatížení vnitřního mechanismu) ale menší rychlost přeběhu. V rychle se pohybující modelech může být rychlost serva důležitá, pro uvedenou aplikaci je ale spíš pomalejší chod výhodou.
-					</p>
-					
-					<p><b>ad 3)</b> Díky možnosti síťového připojení RaspberryPI se přímo nabízí možnost naměřená data (hodnoty) posílat "někam dál". To <i>kam dál</i> je v našem případě celkem jasné - pro takové věci máme <b>MeasurLink</b>. Ten navíc <b>v nové verzi 10 podporuje přenos dat přes MQTT</b>. MQTT je v oblasti malých počítačů, IoT a Home automation mimořádně rozšířený, je tak připojení našeho prototypu na MeasurLink přes MQTT ta pravá volba.
-					</p>
+
+					<ul>
+					  <li>výrobní linka = otočný karusel simulující kontinuální proud měřených dílů (např. na pásu)</li>
+					  <li>mechanické ovládání lineárního snímače - elektricky pomocí malého serva (Hitec HS-85MG)</li>
+					  <li>řídící a vyhodnocovací systém - co nejkompaktnější, přitom snadno programovatelný - ve finále RaspberryPi 3b</li>
+					</ul>
 					
 					<h2>Realizace</h2>
-					<h3>Mechanická kontrukce</h3>
-						<p>Největším dílem a kostrou zařízení je stojan pro úchylkoměry s ocelovou deskou (215-505-10), ve kterém je umístěn vlastní snímač <b>LG-100</b> se zdvihem 10 mm. Veškeré mechanické a elektrické příslušenstvíje navěšeno okolo.
-						Základní model byl udělaný v CAD a vešker potřebné díly byly následně vytištěny z CAD modelů na 3D tiskárně. V talíři podavače jsou ze spodní strany ve vybráních u každé pozice nelepeny malé magnety, které ve spolupráci s magnetickým snímačem (Honeywell SS441A) slouží k určení pozice při otáčení unašeče na další pozici.
-						</p>
-					<h3>Elektrická část a řízení</h3>
-						<p>Celý systém řídí <b>SBC Raspberry Pi 3b s 3,5' TTF displejem</b>, na kterém běží Rasbpberry PI OS, řídí celý systém. Vlastní řídící program je napsaný v <b>Pythonu</b>.Pro přizpůsobení a posílení signálů z periferií (motor, magnetický snímač) byla vyrobena malá deska, která je upevněna na zadní části DIN lišty.
-						</p>
-						<p>Původní plán bylo využít dotykového displeje a udělat komfortní program s GUI knihovnou Tkinter, ale pak, kvůli časovému tlaku, byl použit jen výstup dat do terminálového okna. Barevně je rozlišen dobrý/špatný/jiný díl a neobsazená pozice.
-						</p>
+
+					<p>Základní nosnou část tvoří stojan pro úchylkoměry s ocelovou deskou (215-505-10), na kterém je umístěn vlastní snímač <b>LG-100</b> se zdvihem 10 mm. Veškeré další mechanické a elektrické příslušenství je pak navěšené okolo.
+					</p>
 					
+					<h3 id="anchelectric">Elektrická část a řízení</h3>
+					<p>
+					Ukázalo se, že USB výstup komunikační jednotky lineárních snímačů je navržen jako <i>CDC device</i>. A to je automaticky rozpoznáno i na <b>Linux systémech</b>, kde následně automaticky dojde k vytvoření příslušného virtuálního sériového zařízení. A to je skvělá zpráva. Tím se otevřela možnost použít ke komunikaci s jednotkou i kompaktní linuxové SBC <i>(Single Board Computer)</i> jako mezi kutily oblíbené <b>RaspberryPi</b> a podobné. Navíc, takový SBC snadno zvládne řízení celého systému, tedy kromě zpracování výsledků z LG snímačů i řízení zdvihu (servo) a karuselu. Prostě všechno.
+					</p>
+					<p>RaspberryPi bylo doplněno 3,5' TTF displejem a malou deskou rozhraní pro ovládání motoru karuselu a magnetického spínače jeho polohy (magnet u každého otvoru  pro díl). Na RPi běží <i>Raspberry PI OS</i>, vlastní řídící program je napsaný v <b>Pythonu</b>. Původní plán bylo udělat komfortní program s GUI knihovnou <i>Tkinter</i>, kvůli časovému tlaku na dokončení byl použit jen výstup dat do terminálového okna. Barevně je rozlišen dobrý/špatný/jiný díl a neobsazená pozice. A praxe ukázala, že i toto jednoduché řešení je plně funkční a pohodlně použitelné.
+					</p>
 					
+					<p>Dodatečně jsme aplikaci rozšířili o možnost naměřená data (hodnoty) posílat "někam dál". To <i>kam dál</i> bylo jasné s nástupem aktuální verze <b>MeasurLink v. 10</b>. Tato verze přinesla podporu <b>MQTT</b>. A MQTT je v oblasti malých počítačů, IoT a Home automation mimořádně rozšířený. Rozšíření naší Python aplikace bylo snadné a tak na tomto prototypu můžeme prezentovat i přenos dat přes ethernet do téměř libovolného vyššího systému.
+					</p>
 					
+					<img src="images/EJ_MSV.jpg" alt=""> 
 					
 					<h2>Odkazy a další informace</h2>
 					<p><a href="EEgEhCounterApp.html">Aplikace s lineárními snímači a EG (EH) countery</a></p>
@@ -200,7 +190,7 @@
                         <i class="general foundicon-phone icon"></i>
                         <span class="field">Tel.:</span>
                         <br />
-                        +420 417 514 023                                                               
+                        +420 702 166 237                                                           
                     </li>
                     <li>
                         <i class="general foundicon-mail icon"></i>
