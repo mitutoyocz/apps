@@ -145,7 +145,7 @@
 					</p>
 					<p>Program není od profesionálního programátora a jistě by šel napsat lépe. Na druhou stranu to ale ukazuje, že zkusit to může opravdu každý!
 					</p>
-					<p>Pokud budete instalovat Python na svém počítači pro ladění programu a provádění úprav ve <b>zdrojovém kódu</b>, pak jedinou externí knihovnou je knihovna <a href="https://pypi.org/project/pyserial/">PySerial</a>, kterou je nutno k základnímu Pythonu doinstalovat příkazem <i>pip install pyserial</i>. <br />Funkce spojené s obsluhou LSM jsou z důvodu znovupoužitelnosti v jiných programech uloženy v samostatném souboru <i>lsm.py</i>. Do hlavního modulu <i>main.py</i> je tedy je třeba přilinkovat příkazem <i>from lsm import *</i>.
+					<p>Pokud budete instalovat Python na svém počítači pro ladění programu a provádění úprav ve <b>zdrojovém kódu</b>, pak jedinou externí knihovnou je knihovna <a href="https://pypi.org/project/pyserial/">PySerial</a>, kterou je nutno k základnímu Pythonu doinstalovat příkazem <i>pip install pyserial</i>. <br />Funkce spojené s obsluhou LSM jsou z důvodu znovu použitelnosti v jiných programech uloženy v samostatném souboru <i>lsm.py</i>. Do hlavního modulu <i>main.py</i> je tedy je třeba přilinkovat příkazem <i>from lsm import *</i>.
 					</p>
 					<p>Pokud budete pouze spouštět <b>přeložený program</b>, stačí ho bez jakékoliv instalace pouze nakopírovat do libovolného lokálního adresáře a jen spustit soubor <i>main.exe</i>. Z tohoto souboru je též možné vytvořit zástupce a uložit ho třeba na plochu pro snazší spouštění programu v budoucnu.
 					</p>
@@ -157,7 +157,7 @@
 					<p><b>Tři důležité parametry:</b>
 					</p>
 					<ul>
-						<li><b><i>com_port = COM6</i></b>, který je třeba nastavit podle toho, jaké je systémové přiřazení virtuálního COM portu laserového mikrometru ve Správce zařízení <i>(Device manager)</i></li>
+						<li><b><i>com_port = COM4</i></b>, který je třeba nastavit podle toho, jaké je systémové přiřazení virtuálního COM portu laserového mikrometru ve <i>Správce zařízení (Device manager)</i>, položka <i>USB Serial Device (COMx)</i></li>
 						<li><b><i>sorting_level_file = SortingLevel.csv</i></b>, csv soubor s třídícími mezemi</li>
 						<li><i>poling_frequency = 350</i>, určení intervalu dotazování [ms]. DŮLEŽITÉ: nezkracujte tento interval pod pracovní cyklus LSM, jinak <a href="LSMapp1.html#anchfrequency">dojde k chybovým responsům</a> (dotaz v okamžiku nedokončeného předchozího cyklu) a údaj na displeji bude blikat</li>
 					</ul>
@@ -171,7 +171,7 @@
 					<h2>Odkazy a další informace</h2>
 					<p>Související článek: <a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
 					<p>Download (ZIP): <a href="apps/LSM_Python_sources.zip">Zdrojový kód programu v Pythonu</a></p>
-					<p>Download (ZIP): <a href="">Přeložená aplikace ke spuštění</a></p>
+					<p>Download (ZIP): <a href="apps/LSM_executables.zip">Přeložená aplikace ke spuštění</a></p>
 				
                 </div>
             <!--End Main Content Area-->
