@@ -121,10 +121,10 @@
                 <div class="span12" id="divMain">
 
 					<h1>Malá měřidla - datový výstup a konektivita</h1>
-					<p>Výstupem dat je vybavena většina digitálních ručních měřidel a značná část dalších dílenských elektronických měřidel neobsahující počítač. Jedná se například o drsnoměry, výškoměry, absolute setinová lineární pravítka a podobné. Výstupem dat se rozumí výstup založený na protokolu Digimatic, příp. Digimatic 2 (včetně rozhraní S1). Tento protokol rovněž používají i někteří další výrobci malých měřících přístrojů.
+					<p>Výstupem dat je vybavena většina digitálních ručních měřidel a značná část dalších dílenských elektronických měřidel neobsahujících počítač. Jedná se například o drsnoměry, výškoměry, absolute setinová lineární pravítka a podobné. Výstupem dat se rozumí výstup založený na protokolu Digimatic, příp. Digimatic 2 (včetně rozhraní S1). Tento protokol rovněž používají i někteří další výrobci malých měřících přístrojů.
 					</p>
 					
-					<h3>Transportní vrstva - princip</h3>
+					<h3>Technologie přenosu, princip</h3>
 					<p>Popisuje funkční princip a parametry dané technologie.<br /> Na základě těchto údajů ověřte, zda je daná technologie vhodná pro zamýšlený účel použití.
 					</p>
 					
@@ -150,7 +150,7 @@
 							<p>VCP / (HID)</p>
 						</div>
 						<div style=" padding:0px 25px 5px 25px;">
-							<p><b>Velmi spolehlivý přenos do 20 m. Nízká spotřeba z baterie</b> (životnost 1 rok).</p>
+							<p><b>Velmi spolehlivý přenos do 20 m. Nízká spotřeba z baterie</b> (životnost ~1 rok).</p>
 							<p>Vyžaduje dedikovaný přijímač (až na 100 registrovaných měřidel).</p>
 							<p>Jednosměrný přenos dat z měřidla tlačítkem.</p>
 							<p>Neumožňuje efektivní vyžádání dat z PC (aplikace).</p>
@@ -166,7 +166,7 @@
 							<p>proprietární profil<br />pro aplikace</p>
 						</div>
 						<div style=" padding:0px 25px 5px 25px;">
-							<p>Přenos do 15 m. Vyšší spotřeba z baterie (životnost 3 měsíce).</p>
+							<p>Přenos do 15 m. <b>Vyšší spotřeba z baterie</b> (životnost ~3 měsíce).</p>
 							<p>Vyšší náchylnost k rušení a zahlcení pásma.</p>
 							<p>Někdy nutnost opakovaného párování po rozvázání spojení.</p>
 							<p>Jednosměrný přenos dat z měřidla tlačítkem (HID).</p>
@@ -179,25 +179,27 @@
 				
 				<p>&nbsp;</p>
 				<p><b>VYSVĚTLIVKY</b></P>			
-				<P><b>HID</b> = Human Input Device = vstupní zařízení, zde <b>zařízení fungující stejně jako klávesnice</b>. Hodnota (i text) přenesený přes HID se zapíše na místo kurzoru stejně, jako byl zapsán z klávesnice. Zakončeno znakem ENTER. Ve <i>Správci zařízení</i> se toto připojení jeví jako <i>Zařízení standardu HID</i>.
+				<P><b>HID</b> = Human Input Device = vstupní zařízení, zde <b>zařízení fungující stejně jako klávesnice</b>. Hodnota (i text) přenesený přes HID se zapíše na místo kurzoru stejně, jako byl zapsán z klávesnice. Zakončeno znakem ENTER. Ve <i>Správci zařízení</i> se toto připojení jeví jako <i>Zařízení standardu HID</i>.<br />
+				<span class="label label-warning">POZNÁMKA</span> přestože je HID počítačový standard, nemusí být realizován vždy stejně. A tak v některých případech máme v národních verzích operačního systému přenesená data správně (12,345) v jiných případech nikoliv (ěš,čřž).
 				</p>
 				<P><b>VCP</b> = Virtual Com Port = <b>virtuální sériový vstup</b>. Principiálně funguje stejně jako by data přišla z linky RS232. Ve <i>Správci zařízení</i> je toto připojení objevuje v sekci <i>Porty (COM a LPT)</i>.<br />
 				S tímto portem se velmi snadno procuje v programech. Pokud ale daný port není obsloužen nějakým program, uživatel příchozí data nijak nevidí. Na druhé straně je výhodné, že příchozí data mohou být obsloužena programově, zatímco uživatel na popředí může provádět jakoukoliv jinou činnost.
 				</p>
 
 				<p>&nbsp;</p>
-				<h3>Aplikační vrstva</h3>
+				<h3>Aplikační rozhraní</h3>
 				<p> Zde jsou popsány aplikace nebo způsoby použití, které slouží jako prostředník pro vlastní získávání dat do uživatelova cílového prostředí (Excel, firemní aplikace, SPC, ...)
 				</p>
 				
 				<div class="cable">
 					<h4>&nbsp;Kabel Digimatic USB (USB ITN)</h4>
 					<div style=" padding:0px 25px 5px 25px;">
-						<p>Bez instalace (!) -> data na místo kurzoru</p>
+						<p>Bez instalace jako HID zařízení -> data na místo kurzoru. Čísla zcela korektně dle <i>Windows international</i>. <span class="label label-success">CZ Windows: 12,345</span>.</p>
+						<p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 						<p><b><a href="https://mitutoyo.eu/downloads/free-software-and-updates-and-free-trials#item1">ITPAK 3 free</a></b>: jednoduché pořizování dat (výhradně do Excelu), s rozhraním S1 oboustranná komunikace s měřidlem (přečtení a nastavení parametrů, nulování, ...)</p>
 						<p><b><a href="https://mitutoyo.eu/downloads/free-software-and-updates-and-free-trials#item1">ITPAK 3 full</a></b>: vše jako u free verze + strukturované pořizování dat z více měřidel najednou (výhradně do Excelu)</p>
-						<p><b>MeasurLink</b> (robustní SPC aplikace) pro kolektivní správu a vyhodnocení dat.</p>
-						<p>Skripty (<b>AutoIt</b>) a vlastní aplikace: jednoduchá komunikace s měřidly pomocí ASCII příkazů přes VCP (free driver z ITPAK, pouze Windows). Snadné vyčítání dat (např. opakované časové vyčítání, vyčítání na stisk klávesy, ...), u S1 možnost nulování přepínání rozsahů a režimů atd.</p>
+						<p><b><a href="https://measurlink.com/">MeasurLink</a></b> (robustní SPC aplikace) pro kolektivní správu a vyhodnocení dat.</p>
+						<p><a href="https://mitutoyocz.github.io/apps/STscripting.html">Skripty (<b>AutoIt</b>)</a> a vlastní aplikace: jednoduchá komunikace s měřidly pomocí ASCII příkazů přes VCP (free driver z ITPAK, pouze Windows). Snadné vyčítání dat (např. opakované časové vyčítání, vyčítání na stisk klávesy, ...), u S1 možnost nulování přepínání rozsahů a režimů atd.</p>
 					</div>
 				</div>
 				
@@ -207,7 +209,7 @@
 						<p>Instalace <b><a href="https://mitutoyo.eu/downloads/free-software-and-updates-and-free-trials#item6">U-WAVEPAK</a></b>, automaticky nainstaluje VCP driver.</p>
 						<p>Možnost výdeje dat na místo kurzoru (jako HID).</p>
 						<p><b><a href="https://mitutoyo.eu/downloads/free-software-and-updates-and-free-trials#item1">ITPAK 3 full</a></b>: strukturované pořizování dat z více měřidel najednou (výhradně do Excelu) i v kombinaci s kabely.</p>
-						<p><b>MeasurLink</b> (robustní SPC aplikace) pro kolektivní správu a vyhodnocení dat.</p>
+						<p><b><a href="https://measurlink.com/">MeasurLink</a></b> (robustní SPC aplikace) pro kolektivní správu a vyhodnocení dat.</p>
 					</div>
 				</div>
 				
@@ -215,13 +217,15 @@
 					<h4>&nbsp;Bluetooth LE, 2.4 GHz</h4>
 					<p>&nbsp;<b>Windows</b></p>
 					<div style=" padding:0px 25px 5px 25px;">
-						<p>Možnost napárovat přímo jako HID zařízení -> data na místo kurzoru. Čísla vždy s desetinnou tečkou.</p>
+						<p>Možnost napárovat přímo jako HID zařízení -> data na místo kurzoru. Čísla vždy s desetinnou tečkou. <span class="label label-important">CZ Windows: +ě.ščř &nbsp;&nbsp;(12.345)</span></p>
+						<p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 						<p><b><a href="https://mitutoyo.eu/downloads/free-software-and-updates-and-free-trials#item3">U-WAVEPAK BW</a></b> (free): čísla ma místo kurzoru (desetinný oddělovač podle nastavení Windows). Možnost vyžádat data z aplikace. Nepohodlné grafické prostředí, obtíže s párováním, problematický běh na pozadí.</p>
 						<p>Webová aplikace od <b><a href="https://ble.mintelligence.eu/#/">MeasuringIntelligence s.r.o.</a></b> (prohlížeč s Chrome jádrem). Snadno použitelná bez další instalace. Možnosti exportu dat i vyžádání dat z grafického prostředí.</p>
 					</div>
 					<p>&nbsp;<b>Android</b></p>
 					<div style=" padding:0px 25px 5px 25px;">
-						<p>Možnost napárovat přímo jako HID zařízení -> data na místo kurzoru. Čísla vždy s desetinnou tečkou.</p>
+						<p>Možnost napárovat přímo jako HID zařízení -> data na místo kurzoru. Čísla vždy s desetinnou tečkou. <span class="label label-warning">CZ Android: 12.345</span>. Přítomnost HID "klávesnice" zároveň potlačí systémovou klávesnici na dotykové obrazovce.</p>
+						<p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 						<p>Aplikace <b><a href="https://play.google.com/store/apps/details?id=jp.co.mitutoyo.UwavepakBleMobile&hl=cs&pli=1">U-WAVEPAK BM</a></b> (free): shromažďování dat do tabulky + graf. Možnost uložen do CSV. <a href="https://www.youtube.com/watch?v=-uIvDT8835M">Video zde.</a></p>
 						<p>Aplikace <b><a href="https://play.google.com/store/apps/details?id=jp.co.mitutoyo.UwaveNavi&hl=cs">U-WAVE Navi</a></b> (free): průvodce měřením různých parametrů na dílu (návodka), možnost zadání a vyhodnocení tolerancí, export.</p>
 						<p>Aplikace <b>
@@ -230,7 +234,8 @@
 					</div>
 					<p>&nbsp;<b>Apple iOS</b></p>
 					<div style=" padding:0px 25px 5px 25px;">
-						<p>Možnost napárovat přímo jako HID zařízení -> data na místo kurzoru. Čísla vždy s desetinnou tečkou.</p>
+						<p>Možnost napárovat přímo jako HID zařízení -> data na místo kurzoru. Praktická realizace nebyla testována.</p>
+						<p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 						<p>Aplikace <b>U-WAVE Navi</b> (free): průvodce měřením různých parametrů na dílu (návodka), možnost zadání a vyhodnocení tolerancí, export.</p>
 						<p>Webová aplikace od <b><a href="https://ble.mintelligence.eu/#/">MeasuringIntelligence s.r.o.</a></b> (prohlížeč s Chrome jádrem). Snadno použitelná bez další instalace. Možnosti exportu dat i vyžádání dat z grafického prostředí.</p>
 					</div>					
