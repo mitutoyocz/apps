@@ -36,6 +36,31 @@
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
 
     <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+		.channelValue {font-size:55px; color:#aaaaaa; text-align: right; margin: 0px 100px 0px 55px; float:left;}
+		
+		.prgNote {color:#009000;}
+		
+		
+		table.withoutBorder {
+		  border: 1px solid #FFFFFF;
+		}
+		table.withoutBorder td, table.withoutBorder th {
+		  border: 1px solid #FFFFFF;
+		  padding: 1px 20px 1px 20px;
+		}
+		
+		table.withoutBorderPadding {
+		  border: 1px solid #FFFFFF;
+		}
+
+		video {
+			width: 100%    !important;
+			height: auto   !important;
+		}
+	</style>
+	
 </head>
 <body id="pageBody">
 
@@ -54,12 +79,13 @@
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
-						<div class="navbar">
-							<button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
-								NAVIGATION <span class="icon-chevron-down icon-white"></span>
-							</button>
-							
-						</div>
+                    <div class="navbar">
+                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                        </button>
+
+						
+						
                     </div>
 
                 </div>
@@ -77,89 +103,78 @@
         <div class="divPanel notop page-content">
 
             <div class="breadcrumbs">
-                
+                <a href="index.html">Home</a> &nbsp;/&nbsp; <span>Simple LSM implementation by customer</span>
             </div>
 
             <div class="row-fluid">
             <!--Edit Main Content Area here-->
                 <div class="span12" id="divMain">
-
-                    <h1>Stránky aplikační podpory</h1>
-                    <hr>
-                    
-					<p>Tato stránka představuje <strong>základní rozcestník (index)</strong> a seznam pro několik paralelních témat týkajících se zejména komunálních měřidel a déle systémů pro sběr a zpracování dat.
+					
+					<h1>PRAXE: prototyp pro robotickou kontrolu dvou různých průměrů</h1>
+					<p>Tato aplikace vznikla jako funkční prototyp na základě požadavku zákazníka na 100%.kontrolu hřídelových dílů z dlouhotočného automatu. Předmětem měření jsou dva <b>rozdílné</b> průměry na koncích s tolerančním rozsahem 27 (h8) a 18 (h7) µm.
 					</p>
-					<br />
+					
+					<p style="text-align:center">
+						<img src="images/LSM_K_part.jpg" alt=""> 
+					</p>	
+					
+					<p />
+					<p>V počáteční fázi má být pracoviště s manuální obsluhou, v další s robotickým zakládáním a zpracováním <i>vyhovující / nevyhovující</i>. Právě požadovaná přesnost a výhled robotického zakládání s potřebou volného prosoru při zakládání vedly k volbě použití LSM.
+					</p>
+					<p>Díly <b>nejsou před měřením jednotně orientovány</b> a rozdíl průměrů na obou koncích je pouze cca 0,1 mm, takže systematické vkládání stylem <i>"nejdřív menší, pak větší"</i> by jen zvyšovalo pracnost a celkovou dobu měření. Nicméně relativně velký rozdíl měřených průměrů nabízí při následném zpracování (PC) automatickou detekci jmenovitého hodnoty a následné přiřazení správných tolerancí k ní.
+					</p>
+	
+					<p>Na základě toho vznikla základní mechanická sestava s jednoduchým prizmatem pro vkládání dílu. Jistou námitkou může být, že díky rozdílným průměrům <b>není osa dílu kolmá k rovině laserového svazku</b>. Tato námitka je samozřejmě správná.
+					</p>
+					
+					<p>Pro náš konkrétní díl je rozdíl poloměrů pouze 0,045 mm, což představuje při rozteči podpor 90 mm rozdíl pouze 1,7 úhlové vteřiny. Což je <b>absolutně zanedbatelná úchylka</b>, která představuje chybu průměru pod 0,01 µm.
+					</p>
+					
+					<p>Zajímavé ale je, že tento způsob zakládání se jeví dobře využitelný i při významně větších rozdílech průměrů, jak je předvedeno na následujícím obrázku:
+					</p>
+					
+					<p style="text-align:center">
+						<img src="images/LSM_K_angle.jpg" alt=""> 
+					</p>
+					
+					<p />
+					<p>Protože důležité je, že úhel sklonu osy je u obou možností vložení stejný. Na základě geometrických poměrů je tak možné vypočítat a použit opravný koeficient, který je pro oba průměry stejný. Takže systém kontroly typu <i>"je jedno, kterým koncem začínám"</i>, by byl i zde možný.
+					</p>
+					
+					
+					<h3>Skutečné provedení</h3>
+					
+					<p>Skutečné provedení se podobá <a href="LSMapp2.html">předchozímu příkladu se tříděním trubiček</a>. Významnější změna je pouze a aplikačním programu (zde opět v Pythonu), který zajišťuje potřebnou funkcionalitu a realizuje tak vlastní uživatelské rozhraní.
+					</p>
+					
+					<p style="text-align:center">
+						<img src="images/LSM_K_real.jpg" alt=""> 
+					</p>	
+					
+					<p>Procentuální hodnota vedle skutečné hodnoty znamená její polohu vzhledem k tolerančnímu poli:
+					</p>
+					<ul>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;0% = hodnota dolního tolerančního limitu (LTL)</li>
+						<li>100% = hodnota horního tolerančního limitu (UTL)</li>
+						<li>&nbsp;&nbsp;50% = uprostřed tolerančního pole - <b>ideální stav</b></li>
+					</ul>
+					<p>Díky tomu a díky podbarvení červená/zelená je možné snadno posoudit stav a tendenci pohybu výrobního procesu. Protože zelená je sice OK, ale pokud u toho bude třeba jen 5%, tak je to <b><i>"jen tak tak"</i></b>.
+					</p>
+					
+					<p>Lepší představu o funkci získáte shlédnutím krátkého videa.
+					</p>
+					
+					
+					<video controls>
+					  <source src=".\videos\LSM_K.mp4" type="video/mp4" class="img-polaroid">
+					</video>
+					
 
-					<h3>Laserové mikrometry(Laser Scan Micrometers, LSM) <b><i>  NOVÁ SEKCE!</i></b></h3>
-					<ul>
-						<li><a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a>
-						<br /><i>New range of laser scan micrometers and their applications.</i></li>
-						<li><a href="LSMapp2.html">PRAXE: příklad realizace jednoduché aplikace s LSM u zákazníka</a>
-						<br /><i>Simple LSM implementation by the customer.</i></li>
-						<li><a href="LSMapp3.html">PRAXE: prototyp pro robotickou kontrolu dvou různých průměrů</a>
-						<br /><i>Simple LSM implementation by the customer Nr. 2</i></li>
-					</ul>
-					<br />
 					
-					<h3>Lineární snímače (linear gages)</h3>
-					<ul>
-						<li><a href="EgEhCounterApp.html">Aplikace s lineárními snímači a EG (EH) countery</a>
-						<br /><i>Aplication with linear gauges and EG (EH) counters</i></li>
-						<li><a href="EjCounterApp.html">Nová řada lineárních snímačů a EJ counterů</a>
-						<br /><i>New serie of linear gauges and EJ counters.</i></li>
-						<li><a href="EjCounterInterface1.html">Připojení a komunikace EJ-counterů s prostředím, díl 1 (s použitím IO)</a>
-						<br /><i>Connection and communicateion of EJ counters with environment, part 1 (using IO)</i></li>
-						<li><a href="EjCounterInterface2.html">Připojení a komunikace EJ-counterů s prostředím, díl 2 (s použitím datové komunikace)</a>
-						<br /><i>Connection and communicateion of EJ counters with environment, part 2 (using data cummunication)</i></li>
-						<li><a href="EjCounterInterface3.html">Připojení a komunikace EJ-counterů s prostředím, díl 3 (demonstrační projekt)</a>
-						<br /><i>Connection and communicateion of EJ counters with environment, part 3 (demonstration project)</i></li>
-					</ul>
-					<br />
-					
-					<h3>Měření a zpracování dat (measuring and data processing)</h3>
-					<ul>
-						<li><a href="STconnectivity.html">Malá měřidla - datový výstup a konektivita</a>
-						<br /><i>Small Tools conncetivity and data output</i></li>
-						<li><a href="android-connecting.html">Připojení komunálních měřidel Mitutoyo k Android zařízením.</a>
-						<br /><i>Connecting of Mitutoyo small instruments with Android devices.</i></li>
-						<li><a href="skel-meas1.html">Příklad JavaScript řešení pro záznam a grafickou prezentaci dat ve společném grafu (až 3 kanály).</a>
-						<br /><i>JavaScript example for recording and graphic data presentation (in common diagram).</i></li>
-						<li><a href="skel-meas1.html">Příklad JavaScript řešení pro záznam a grafickou prezentaci dat v oddělených grafech (až 3 kanály).</a>
-						<br /><i>JavaScript example for recording and graphic data presentation (in separate diagrams).</i></li>
-						<li><a href="LH600DataOutput.html">Výstup dat z výškoměru LH-600 pomocí kabelu.</a>
-						<br /><i>Data output from LH-600 using cable.</i></li>	
-					</ul>
-					<br />
-					
-					<h3>Optika a mikroskopy</h3>
-					<ul>
-						<li><a href="MicroscopeUnits.html">Úvod do video mikroskopových jednotek</a>
-						<br /><i>Introduction to Video Microscope Units</i></li>	
-					</ul>
-					<br />
-					
-					<h3>Příklady realizací (application examples)</h3>
-					<ul>
-						<li><a href="QuickImageVideo1.html">Video QuickImage prototypová instalace pro automatickou kontrolu. Ukázka schopnosti plně automatizovaného běhu a možností napojení na další zařízení.</a>
-						<br /><i>Video: QuickImage prototype for automatic product sorting. Shows the possibility for full automatic run and for independent hardware control.</i></li>
-						<li><a href="LsmFanucVideo.html">Laser Scan Micrometer with the FANUC robot. Ukázka možnosti spolupráce robota s měřícím zařízením.</a>
-						<br /><i>Video: Laser Scan Micrometer with the FANUC robot. Automation example.</i></li>
-						<li><a href="LsmFanucVideoMSV2018.html">Laser Scan Micrometer and SJ-410 with the FANUC robot. Ukázka možnosti spolupráce robota s měřícím zařízením (MSV Brno 2018).</a>
-						<br /><i>Video: Laser Scan Micrometer plus SJ-410 with the FANUC robot. Automation example.</i></li>
-						<li><a href="SignalOutputIndicatorSaw.html">Simple automation in saw sharpening using of signal indicator 543-350B and PLC.</a>
-						<br /><i>Video: jednoduchá automatizace s použitím úchylkoměru 543-350B s digitálními výstupy s připojením na PLC.</i></li>
-						<li><a href="TirMeasurementEhCounter.html">TIR measurement using linear gauges and EH couner</a>
-						<br /><i>Měření házení s použitím lineárních snímačů a EH čitačů.</i></li>
-					</ul>
-					<br />
-					
-					<h3>Lineární odměřovací pravítka (linear scales)</h3>
-					<ul>
-						<li><a href="../scales/index.html">Samostatný web věnovaný NC i DRO lineárním odměřovacím pravítkům.</a>
-						<br /><i>Stand-alone website for DRO and NC linear scales. In Czech language only.</i></li>
-					</ul>
-		                            
+					<h2>Odkazy a další informace</h2>
+					<p>Související článek: <a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
+					<p>Související článek: <a href="LSMapp2.html">PRAXE: příklad realizace jednoduché aplikace s LSM u zákazníka</a></p>
+				
                 </div>
             <!--End Main Content Area-->
             </div>
@@ -181,7 +196,7 @@
 
                     <p>Obsah těchto stránek je určen pro poskytování aplikační podpory. Jde o prezentaci podrobnějších informací k některým produktům o demonstraci příkladů úspěšných řešení.
 					<br />  
-					Stránky poskytují doplňující infomace k hlavním stránkám společnosti 
+					Stránky poskytují doplňující informace k hlavním stránkám společnosti 
 					<a href="http://www.mitutoyo.cz" title="Email">www.mitutoyo.cz</a>.</p>                    
                 </div>
                 
@@ -201,13 +216,13 @@
                         <i class="general foundicon-phone icon"></i>
                         <span class="field">Tel.:</span>
                         <br />
-                        +420 702 166 237                                                               
+                        +420 702 166 237                                                           
                     </li>
                     <li>
                         <i class="general foundicon-mail icon"></i>
                         <span class="field">Email:</span>
                         <br />
-                        <a href="mailto:scales@mitutoyo.cz" title="Email">scales@mitutoyo.cz</a>
+                        <a href="mailto:m.marusak@mitutoyo.cz" title="Email">m.marusak@mitutoyo.cz</a>
                     </li>
                     <li>
                         <i class="general foundicon-home icon" style="margin-bottom:50px"></i>
@@ -234,14 +249,11 @@
         </div>
     </div>
 </div>
-<br /><br /><br />
+<br />
 
 <script src="scripts/jquery.min.js" type="text/javascript"></script> 
 <script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="scripts/default.js" type="text/javascript"></script>
-
-
-
 
 
 </body>
