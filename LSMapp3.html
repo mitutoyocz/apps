@@ -127,7 +127,7 @@
 					<p>Na základě toho vznikla základní mechanická sestava s jednoduchým prizmatem pro vkládání dílu. Jistou námitkou může být, že díky rozdílným průměrům <b>není osa dílu kolmá k rovině laserového svazku</b>. Tato námitka je samozřejmě správná.
 					</p>
 					
-					<p>Pro náš konkrétní díl je rozdíl poloměrů pouze 0,045 mm, což představuje při rozteči podpor 90 mm rozdíl pouze 1,7 úhlové vteřiny. Což je <b>absolutně zanedbatelná úchylka</b>, která představuje chybu průměru pod 0,01 µm.
+					<p>Pro náš konkrétní díl je rozdíl poloměrů pouze 0,045 mm, což představuje při rozteči podpor 90 mm rozdíl pouze 1,7 úhlové minuty (=rozdíl 0,5 mm/metr). Což je <b>absolutně zanedbatelná úchylka</b>, která představuje chybu průměru pod 0,01 µm.
 					</p>
 					
 					<p>Zajímavé ale je, že tento způsob zakládání se jeví dobře využitelný i při významně větších rozdílech průměrů, jak je předvedeno na následujícím obrázku:
@@ -169,7 +169,12 @@
 					  <source src=".\videos\LSM_K.mp4" type="video/mp4" class="img-polaroid">
 					</video>
 					
-
+					<h3>Další kroky</h3>
+					
+					<p>Jak bylo řešeno, tato aplikace je funkční prototyp. Ukazuje zákazníkovi (který si LSM k tomuto účelu zakoupil) reálnou funkcionalitu a nastiňuje směr, kterým se může dál rozvíjet. Zároveň je to ale i řešení reálně použitelné v praxi, které i při ručním zakládání málo kvalifikovanou obsluhou umožní provádět rutinní kontrolu s dodržením požadované přesností a s rychlostí kontroly pod 10 s/díl (takt).
+					</p>
+					<p>Přidáním modulu digitálního IO rozhraní k vyhodnocovacímu PC, rozšířením programu a připojením navazujících zařízení pak lze docílit vyššího stupně automatizace (např. otáčení či posuv dílu při měření <i>Průměr1</i> a <i>Průměr2</i>), případně možnosti realizovat celý proces plně roboticky. V takovém případě by možná bylo lepší přepsat stávající program do některého z jazyků pro .NET, hlavně kvůli sw knihovnám pro připojení externích IO.
+					</p>
 					
 					<h2>Odkazy a další informace</h2>
 					<p>Související článek: <a href="LSMapp1.html">Nová řada bezkontaktních laserových mikrometrů a jejich použití.</a></p>
